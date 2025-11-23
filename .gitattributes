@@ -1,0 +1,2 @@
+/src/finaccess/2024_Finaccess_Publicdata.csv filter=lfs diff=lfs merge=lfs -text
+/src/finaccess/2024_Finaccess_Publicdata.xlsx filter=lfs diff=lfs merge=lfs -text
