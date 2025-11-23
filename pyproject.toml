@@ -1,0 +1,25 @@
+[project]
+name = "finaccess"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "kraigochieng", email = "kraigochieng@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastexcel>=0.16.0",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "polars>=1.35.2",
+    "pyarrow>=22.0.0",
+    "python-calamine>=0.5.4",
+    "xlsx2csv>=0.8.4",
+]
+
+[project.scripts]
+finaccess = "finaccess:main"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
