@@ -1,27 +1,45 @@
+import duckdb
 import pyarrow.parquet as pq
+
 from finaccess.columns import columns, keys
 
-parquet_file = pq.ParquetFile("finaccess_2024_optimized.parquet")
+parquet_file_path = "finaccess_2024_optimized.parquet"
+
+# parquet_file = pq.ParquetFile("finaccess_2024_optimized.parquet")
 
 # See all column names
 
+# print(f"Metadata: {parquet_file.metadata}")
 
-print(f"Metadata: {parquet_file.metadata}")
-
-all_columns = parquet_file.schema
-print(f"Total columns: {len(all_columns)}")
+# all_columns = parquet_file.schema
+# print(f"Total columns: {len(all_columns)}")
 
 
-print(parquet_file.num_row_groups)
+# print(parquet_file.num_row_groups)
 # print(keys + columns["A"])
 
-df_A = parquet_file.read(columns=keys + columns["A"]).to_pandas()
+# df_A = parquet_file.read(columns=keys + columns["A"]).to_pandas()
 
 # print(df_A.head())
 
 # print(parquet_file.schema.names)
 
-for name, column_names in columns.items():
-    df = parquet_file.read(columns=keys + columns[name]).to_pandas()
+# for name, column_names in columns.items():
+#     df = parquet_file.read(columns=keys + columns[name]).to_pandas()
 
-    print(df.head())
+#     print(df.head())
+
+
+con = duckdb.connect(database=":memory:")
+
+result_df = con.execute(
+    f"""
+    SELECT
+        saving_for_education,
+        COUNT(*)
+    FROM {parquet_file_path}
+    GROUP BY saving_for_education
+    """
+).fetch_df()
+
+print(result_df.head())

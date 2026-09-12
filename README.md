@@ -12,3 +12,5 @@ ask finaccess to release the data as a parquet file too
 
 
 show the finaccess questionnaire too: paste the link
+
+identify key metrics and key dimensions relevant to fintech startup founders. look at finaccess dashboard
