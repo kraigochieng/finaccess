@@ -11,7 +11,7 @@ import logging
 from dataclasses import dataclass
 
 import duckdb
-import pandas as pd
+import polars as pl
 
 from finaccess.logging_config import setup_logging
 from finaccess.paths import DATA_DIR
@@ -93,7 +93,7 @@ def segment_query(metric: Metric, universe: str, segment_sql: str) -> str:
     """
 
 
-def compute() -> pd.DataFrame:
+def compute() -> pl.DataFrame:
     con = duckdb.connect()
     frames = []
     for universe in UNIVERSES:
@@ -101,40 +101,51 @@ def compute() -> pd.DataFrame:
             # "all" is the national baseline within this universe
             cuts = {"all": "'All'", **DIMENSIONS}
             for dimension, segment_sql in cuts.items():
-                df = con.execute(segment_query(metric, universe, segment_sql)).fetchdf()
-                df = df[df["segment"].notna()]
-                df.insert(0, "dimension", dimension)
-                df.insert(0, "metric", metric.id)
-                df.insert(0, "universe", universe)
-                frames.append(df)
+                frames.append(
+                    con.execute(segment_query(metric, universe, segment_sql))
+                    .pl()
+                    .filter(pl.col("segment").is_not_null())
+                    .select(
+                        pl.lit(universe).alias("universe"),
+                        pl.lit(metric.id).alias("metric"),
+                        pl.lit(dimension).alias("dimension"),
+                        "segment",
+                        "n",
+                        "adults",
+                        pl.col("adults_served").fill_null(0),
+                    )
+                )
 
-    result = pd.concat(frames, ignore_index=True)
-    result["adults_served"] = result["adults_served"].fillna(0)
-    result["share_served"] = result["adults_served"] / result["adults"]
-    result["unserved_adults"] = result["adults"] - result["adults_served"]
-
-    national = (
-        result[result["dimension"] == "all"]
-        .set_index(["universe", "metric"])["share_served"]
-        .rename("national_share")
+    result = pl.concat(frames).with_columns(
+        (pl.col("adults_served") / pl.col("adults")).alias("share_served"),
+        (pl.col("adults") - pl.col("adults_served")).alias("unserved_adults"),
     )
-    result = result.join(national, on=["universe", "metric"])
-    result["gap_pp"] = (result["share_served"] - result["national_share"]) * 100
-    result["low_confidence"] = result["n"] < MIN_SEGMENT_N
-    return result
+
+    national = result.filter(pl.col("dimension") == "all").select(
+        "universe", "metric", pl.col("share_served").alias("national_share")
+    )
+    return result.join(national, on=["universe", "metric"], how="left").with_columns(
+        ((pl.col("share_served") - pl.col("national_share")) * 100).alias("gap_pp"),
+        (pl.col("n") < MIN_SEGMENT_N).alias("low_confidence"),
+    )
 
 
-def check_against_report(result: pd.DataFrame) -> None:
+def national_row(result: pl.DataFrame, metric: str) -> dict:
+    return result.filter(
+        (pl.col("universe") == "all_adults")
+        & (pl.col("dimension") == "all")
+        & (pl.col("metric") == metric)
+    ).row(0, named=True)
+
+
+def check_against_report(result: pl.DataFrame) -> None:
     """Fail if national figures drift from the published 2024 report."""
-    national = result[(result["universe"] == "all_adults") & (result["dimension"] == "all")]
-    national = national.set_index("metric")
-
     for metric, (expected, source) in REPORT_SHARES.items():
-        actual = national.at[metric, "share_served"] * 100
+        actual = national_row(result, metric)["share_served"] * 100
         if abs(actual - expected) > TOLERANCE_PP:
             raise SystemExit(f"{metric}: {actual:.1f}% vs report {expected}% ({source})")
 
-    bank_users = national.at["bank", "adults_served"] / 1e6
+    bank_users = national_row(result, "bank")["adults_served"] / 1e6
     if abs(bank_users - REPORT_BANK_USERS_MILLIONS) > 0.05:
         raise SystemExit(f"bank users: {bank_users:.2f}M vs report {REPORT_BANK_USERS_MILLIONS}M")
     logger.info("National figures match the 2024 report")
@@ -144,14 +155,14 @@ def main() -> None:
     RESULTS_DIR.mkdir(exist_ok=True)
     result = compute()
     check_against_report(result)
-    result.round(4).to_csv(METRICS_CSV, index=False)
-    logger.info("Wrote %s rows to %s", len(result), METRICS_CSV.name)
 
-    headline = result[(result["universe"] == "all_adults") & (result["dimension"] == "all")]
-    logger.info(
-        "National shares:\n%s",
-        headline.set_index("metric")["share_served"].mul(100).round(1).to_string(),
-    )
+    result.with_columns(pl.col(pl.Float64).round(4)).write_csv(METRICS_CSV)
+    logger.info("Wrote %s rows to %s", result.height, METRICS_CSV.name)
+
+    headline = result.filter(
+        (pl.col("universe") == "all_adults") & (pl.col("dimension") == "all")
+    ).select("metric", (pl.col("share_served") * 100).round(1).alias("share_pct"))
+    logger.info("National shares:\n%s", headline)
 
 
 if __name__ == "__main__":
