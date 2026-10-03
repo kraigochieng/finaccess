@@ -1,16 +1,16 @@
 import logging
 import re
-from pathlib import Path
 
 import pandas as pd
 
 from finaccess.logging_config import setup_logging
+from finaccess.paths import DATA_DIR
 
 setup_logging()
 
 logger = logging.getLogger(__name__)
 
-path = Path("2024_Finaccess_Publicdata_values.txt")
+path = DATA_DIR / "2024_Finaccess_Publicdata_values.txt"
 
 text = path.read_text()
 
@@ -39,4 +39,4 @@ for line in text.splitlines():
 df = pd.DataFrame(rows)
 
 # Export to CSV
-df.to_csv("2024_Finaccess_Publicdata_values_processed.csv", index=False)
+df.to_csv(DATA_DIR / "2024_Finaccess_Publicdata_values_processed.csv", index=False)

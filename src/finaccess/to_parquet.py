@@ -7,6 +7,8 @@ import sys
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from finaccess.paths import DATA_DIR
+
 
 def convert_excel_to_parquet_optimized(
     excel_file_path: str,
@@ -111,8 +113,8 @@ def convert_excel_to_parquet_optimized(
 
 if __name__ == "__main__":
     convert_excel_to_parquet_optimized(
-        excel_file_path="2024_Finaccess_Publicdata.xlsx",
-        parquet_file_path="finaccess_2024_optimized.parquet",
+        excel_file_path=str(DATA_DIR / "2024_Finaccess_Publicdata.xlsx"),
+        parquet_file_path=str(DATA_DIR / "finaccess_2024_optimized.parquet"),
         chunk_size=1_000,  # Start here; bump to 100K if you have 16GB+ RAM
         compression="zstd",
     )

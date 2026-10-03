@@ -2,8 +2,9 @@ import duckdb
 import pyarrow.parquet as pq
 
 from finaccess.columns import columns, keys
+from finaccess.paths import DATA_DIR
 
-parquet_file_path = "finaccess_2024_optimized.parquet"
+parquet_file_path = DATA_DIR / "finaccess_2024_optimized.parquet"
 
 # parquet_file = pq.ParquetFile("finaccess_2024_optimized.parquet")
 
@@ -37,7 +38,7 @@ result_df = con.execute(
     SELECT
         saving_for_education,
         COUNT(*)
-    FROM {parquet_file_path}
+    FROM '{parquet_file_path}'
     GROUP BY saving_for_education
     """
 ).fetch_df()
