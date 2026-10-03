@@ -4,6 +4,8 @@ Exploring the FinAccess 2024 household survey (Kenya) to find where financial ac
 
 > **Hypothetical case study.** This is an exercise in turning survey microdata into insight for fintech founders. The outputs are not market advice.
 
+**Live data story: https://finaccess.onrender.com/**
+
 ## Goal
 
 Answer questions a fintech founder would ask when choosing where to build, using the latest FinAccess round (2024):
@@ -146,7 +148,7 @@ It follows light and dark mode, works at phone width, and every chart has a keyb
 
 **Viewing it:** open `site/index.html` in a browser.
 
-**Hosting it** (the page is static, so any static host works):
+**Hosting it.** The live page is at https://finaccess.onrender.com/, a Render static site with publish directory `site`. The page is static, so any static host works:
 - *Render:* New > Static Site, connect this repository, leave the build command empty and set the publish directory to `site`.
 - *GitHub Pages:* serve the `site` folder from the repository settings, or copy `site/index.html` to a `gh-pages` branch.
 
