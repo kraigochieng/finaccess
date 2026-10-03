@@ -33,26 +33,29 @@ uv run python -m finaccess.gaps      # results/segment_gaps.csv, results/product
 uv run pytest
 ```
 
-**Method.** Ten "served" metrics built on the survey's own derived indicators (any access, formal access, mobile money, bank, savings, loan, digital credit, insurance, pension, SACCO). Each is the share of adults (18+) served, weighted with `indWeight`, for all adults and for mobile money users, cut by county, sex, age group and education. `metrics.py` checks the national figures against the 2024 report (formal access 84.8%, excluded 9.9%, 14.8 million bank users) and fails if they drift.
+**Method.** Eleven "served" metrics built on the survey's own derived indicators (any access, formal access, mobile money, bank, savings, loan, digital credit, app-based digital loans, insurance, pension, SACCO). Each is the share of adults (18+) served, weighted with `indWeight`, for all adults and for mobile money users, cut by county, sex, age group and education. `metrics.py` checks the national figures against the 2024 report (formal access 84.8%, excluded 9.9%, 14.8 million bank users, credit usage 64.0%, savings 68.1%) and fails if they drift.
 
 - `gap_pp`: segment share minus national share
 - `gap_adults`: adults who would be served if the segment matched the national share. This is the size of the opportunity.
-- A segment is a gap if it lags by 5+ points or sits 25%+ below the national share (the relative rule covers low-prevalence products like digital credit). Segments with fewer than 30 sampled adults are flagged and never ranked.
+- A segment is a gap if it lags by 5+ points or sits 25%+ below the national share (the relative rule covers low-prevalence products like app-based digital loans). Segments with fewer than 30 sampled adults are flagged and never ranked.
 
 **Product gaps** (adults 18+, 28.1M):
 
 | Product | Served | Unserved adults | Unserved mobile money users |
 |---|---|---|---|
-| Digital credit | 2.4% | 27.5M | 24.5M |
+| App-based digital loans | 2.4% | 27.5M | 24.4M |
 | SACCO | 11.7% | 24.9M | 21.9M |
-| Pension | 11.8% | 24.8M | 21.9M |
+| Pension | 11.8% | 24.8M | 21.8M |
 | Insurance (incl. NHIF) | 22.0% | 22.0M | 19.0M |
+| Digital credit (broad) | 29.6% | 19.8M | 16.9M |
 | Bank | 52.5% | 13.4M | 10.7M |
 | Loan | 64.0% | 10.1M | 8.0M |
 | Savings | 68.1% | 9.0M | 6.9M |
 | Mobile money access | 89.2% | 3.0M | 0 |
 
-Mobile money is close to universal, yet most mobile money users have no digital credit, insurance or pension. That is the adjacent gap: the rail exists, the product does not.
+Mobile money is close to universal, yet most mobile money users have no insurance, pension or SACCO account, and about two in three have used no digital credit at all. That is the adjacent gap: the rail exists, the product does not.
+
+**Two digital credit measures.** "Digital credit (broad)" is the survey's `Digital_credit_2`: Hustler Fund, mobile money and mobile banking loans. The report puts Hustler Fund usage alone at 28.9% of adults, and this indicator is close (29.6%) but I have not validated it exactly. "App-based digital loans" is `Digital_credit_usage`, which covers lending apps only. It is about 2% of adults, which matches the report's Figure 3.7 (roughly 0-4% across wealth quintiles), so app lending is a thin market, not a gap that mobile money or Hustler Fund users are missing out on. An earlier version of this README presented the 2.4% figure as digital credit overall; that overstated the gap.
 
 **Largest lagging segments** (all adults, by `gap_adults`):
 
@@ -60,6 +63,7 @@ Mobile money is close to universal, yet most mobile money users have no digital 
 - Adults with no formal education: bank 18.5%, savings 38.3% (about 0.9M and 0.8M short)
 - Women: bank 46.5%, insurance 16.1%, pension 7.7% (0.6-0.9M short each)
 - Counties: formal access in West Pokot (48.5%) and Turkana (65.9%); insurance in Kitui (8.6%) and Kakamega (13.8%)
+- Digital credit (broad): adults over 55 (11.6%, about 0.7M short) and adults with no formal education (7.7%, about 0.6M short)
 
 Read `segment_gaps.csv` for the full ranking, including the mobile-money-user cut.
 

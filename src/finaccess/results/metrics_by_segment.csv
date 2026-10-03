@@ -135,74 +135,142 @@ all_adults,bank,education,Some university,344,842415.4256,684457.7667,0.8125,157
 all_adults,bank,education,University completed,988,1666465.0806,1560575.5534,0.9365,105889.5272,0.5249,41.1524,false
 all_adults,bank,sex,Female,11739,14493608.7579,6742734.5623,0.4652,7750874.1957,0.5249,-5.9713,false
 all_adults,bank,sex,Male,8011,13648459.8338,8030008.2242,0.5883,5618451.6096,0.5249,6.3411,false
-all_adults,digital_credit,age_group,18-25,3997,7869764.6248,100900.942,0.0128,7768863.6828,0.0238,-1.0933,false
-all_adults,digital_credit,age_group,26-35,5361,8007561.237,319750.4195,0.0399,7687810.8175,0.0238,1.6177,false
-all_adults,digital_credit,age_group,36-45,3942,5235668.4683,176743.6988,0.0338,5058924.7695,0.0238,1.0003,false
-all_adults,digital_credit,age_group,46-55,2545,3012525.7976,47472.6878,0.0158,2965053.1098,0.0238,-0.7996,false
-all_adults,digital_credit,age_group,Above 55,3905,4016548.4641,23623.6612,0.0059,3992924.8029,0.0238,-1.7873,false
-all_adults,digital_credit,all,All,19750,28142068.5917,668491.4093,0.0238,27473577.1824,0.0238,0.0,false
-all_adults,digital_credit,county,Baringo,360,355688.567,5282.9437,0.0149,350405.6233,0.0238,-0.8901,false
-all_adults,digital_credit,county,Bomet,499,477064.973,7291.988,0.0153,469772.985,0.0238,-0.8469,false
-all_adults,digital_credit,county,Bungoma,495,854632.3786,12177.3456,0.0142,842455.0331,0.0238,-0.9506,false
-all_adults,digital_credit,county,Busia,369,481049.2494,7288.7109,0.0152,473760.5385,0.0238,-0.8602,false
-all_adults,digital_credit,county,Elgeyo-Marakwet,411,251049.7116,7616.5424,0.0303,243433.1693,0.0238,0.6585,false
-all_adults,digital_credit,county,Embu,467,405564.1153,7481.1488,0.0184,398082.9665,0.0238,-0.5308,false
-all_adults,digital_credit,county,Garissa,282,427934.5739,309.6114,0.0007,427624.9625,0.0238,-2.3031,false
-all_adults,digital_credit,county,Homabay,462,594237.141,6429.1658,0.0108,587807.9751,0.0238,-1.2935,false
-all_adults,digital_credit,county,Isiolo,277,152207.825,865.9494,0.0057,151341.8755,0.0238,-1.8065,false
-all_adults,digital_credit,county,Kajiado,404,722562.6998,34866.2812,0.0483,687696.4186,0.0238,2.4499,false
-all_adults,digital_credit,county,Kakamega,539,1006907.1142,16957.2014,0.0168,989949.9128,0.0238,-0.6913,false
-all_adults,digital_credit,county,Kericho,433,511505.0319,12190.9966,0.0238,499314.0352,0.0238,0.0079,false
-all_adults,digital_credit,county,Kiambu,518,1723743.0858,117909.6234,0.0684,1605833.4623,0.0238,4.4649,false
-all_adults,digital_credit,county,Kilifi,504,806712.7777,11314.3156,0.014,795398.4621,0.0238,-0.9729,false
-all_adults,digital_credit,county,Kirinyaga,498,427716.5776,6712.3843,0.0157,421004.1933,0.0238,-0.8061,false
-all_adults,digital_credit,county,Kisii,486,703778.4032,3645.1069,0.0052,700133.2963,0.0238,-1.8575,false
-all_adults,digital_credit,county,Kisumu,489,674363.2225,15184.151,0.0225,659179.0715,0.0238,-0.1238,false
-all_adults,digital_credit,county,Kitui,396,645462.4421,6721.436,0.0104,638741.0061,0.0238,-1.3341,false
-all_adults,digital_credit,county,Kwale,359,463991.5198,7340.573,0.0158,456650.9468,0.0238,-0.7934,false
-all_adults,digital_credit,county,Laikipia,361,315296.6932,2207.2885,0.007,313089.4047,0.0238,-1.6753,false
-all_adults,digital_credit,county,Lamu,239,93092.0178,0.0,0.0,93092.0178,0.0238,-2.3754,false
-all_adults,digital_credit,county,Machakos,477,911529.1895,11232.7481,0.0123,900296.4414,0.0238,-1.1431,false
-all_adults,digital_credit,county,Makueni,440,596725.5193,2164.5381,0.0036,594560.9812,0.0238,-2.0127,false
-all_adults,digital_credit,county,Mandera,348,360658.6492,0.0,0.0,360658.6492,0.0238,-2.3754,false
-all_adults,digital_credit,county,Marsabit,341,229903.1829,0.0,0.0,229903.1829,0.0238,-2.3754,false
-all_adults,digital_credit,county,Meru,611,957274.1252,16061.0317,0.0168,941213.0935,0.0238,-0.6976,false
-all_adults,digital_credit,county,Migori,511,583081.0312,11733.8053,0.0201,571347.2259,0.0238,-0.363,false
-all_adults,digital_credit,county,Mombasa,412,836395.571,54641.9338,0.0653,781753.6371,0.0238,4.1576,false
-all_adults,digital_credit,county,Murang'a,493,686152.1427,9587.8656,0.014,676564.2771,0.0238,-0.9781,false
-all_adults,digital_credit,county,Nairobi City,613,3127758.3552,101887.2865,0.0326,3025871.0687,0.0238,0.8821,false
-all_adults,digital_credit,county,Nakuru,542,1322608.9185,29490.9949,0.0223,1293117.9236,0.0238,-0.1457,false
-all_adults,digital_credit,county,Nandi,450,509820.4844,11884.5357,0.0233,497935.9487,0.0238,-0.0443,false
-all_adults,digital_credit,county,Narok,385,577188.7596,18396.2472,0.0319,558792.5123,0.0238,0.8118,false
-all_adults,digital_credit,county,Nyamira,463,350968.5193,2498.7577,0.0071,348469.7616,0.0238,-1.6635,false
-all_adults,digital_credit,county,Nyandarua,406,399887.5015,4722.5205,0.0118,395164.9809,0.0238,-1.1945,false
-all_adults,digital_credit,county,Nyeri,450,541745.3679,16448.209,0.0304,525297.1589,0.0238,0.6607,false
-all_adults,digital_credit,county,Samburu,299,155103.6455,82.2409,0.0005,155021.4046,0.0238,-2.3224,false
-all_adults,digital_credit,county,Siaya,393,548128.5248,2151.6614,0.0039,545976.8634,0.0238,-1.9829,false
-all_adults,digital_credit,county,Taita-Taveta,374,217575.7223,961.2016,0.0044,216614.5207,0.0238,-1.9336,false
-all_adults,digital_credit,county,Tana River,307,162130.6529,0.0,0.0,162130.6529,0.0238,-2.3754,false
-all_adults,digital_credit,county,Tharaka-Nithi,405,250143.9039,5882.7599,0.0235,244261.144,0.0238,-0.0237,false
-all_adults,digital_credit,county,Trans Nzoia,149,534486.2565,8332.0791,0.0156,526154.1774,0.0238,-0.8165,false
-all_adults,digital_credit,county,Turkana,388,486734.4692,2845.579,0.0058,483888.8902,0.0238,-1.7908,false
-all_adults,digital_credit,county,Uasin Gishu,517,716955.2169,51386.2793,0.0717,665568.9376,0.0238,4.7919,false
-all_adults,digital_credit,county,Vihiga,403,332080.8641,9853.378,0.0297,322227.4861,0.0238,0.5917,false
-all_adults,digital_credit,county,Wajir,376,364640.4097,4981.1125,0.0137,359659.2972,0.0238,-1.0094,false
-all_adults,digital_credit,county,West Pokot,349,287831.4883,1471.8794,0.0051,286359.6089,0.0238,-1.864,false
-all_adults,digital_credit,education,95,1,973.5078,0.0,0.0,973.5078,0.0238,-2.3754,true
-all_adults,digital_credit,education,Completed technical training after secondary school,1421,2367653.4672,187753.5829,0.0793,2179899.8843,0.0238,5.5545,false
-all_adults,digital_credit,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.0238,-2.3754,true
-all_adults,digital_credit,education,None,3021,2745941.3393,320.1253,0.0001,2745621.2139,0.0238,-2.3638,false
-all_adults,digital_credit,education,Other (Specify),2,2656.4397,0.0,0.0,2656.4397,0.0238,-2.3754,true
-all_adults,digital_credit,education,Primary completed,3802,5223129.3508,72435.2773,0.0139,5150694.0734,0.0238,-0.9886,false
-all_adults,digital_credit,education,Refused to Answer (DO NOT READ OUT),3,1799.2491,0.0,0.0,1799.2491,0.0238,-2.3754,true
-all_adults,digital_credit,education,Secondary completed,4063,6620476.5149,178659.8448,0.027,6441816.6701,0.0238,0.3232,false
-all_adults,digital_credit,education,Some primary,3567,4602544.3325,38423.1504,0.0083,4564121.182,0.0238,-1.5406,false
-all_adults,digital_credit,education,Some secondary,2045,3187036.4105,41004.0596,0.0129,3146032.3509,0.0238,-1.0888,false
-all_adults,digital_credit,education,Some technical training after secondary school,491,876831.186,27615.2151,0.0315,849215.9709,0.0238,0.774,false
-all_adults,digital_credit,education,Some university,344,842415.4256,44568.1147,0.0529,797847.3109,0.0238,2.9151,false
-all_adults,digital_credit,education,University completed,988,1666465.0806,77712.0392,0.0466,1588753.0414,0.0238,2.2879,false
-all_adults,digital_credit,sex,Female,11739,14493608.7579,304772.1401,0.021,14188836.6178,0.0238,-0.2726,false
-all_adults,digital_credit,sex,Male,8011,13648459.8338,363719.2692,0.0266,13284740.5646,0.0238,0.2895,false
+all_adults,digital_apps,age_group,18-25,3997,7869764.6248,100900.942,0.0128,7768863.6828,0.0238,-1.0933,false
+all_adults,digital_apps,age_group,26-35,5361,8007561.237,319750.4195,0.0399,7687810.8175,0.0238,1.6177,false
+all_adults,digital_apps,age_group,36-45,3942,5235668.4683,176743.6988,0.0338,5058924.7695,0.0238,1.0003,false
+all_adults,digital_apps,age_group,46-55,2545,3012525.7976,47472.6878,0.0158,2965053.1098,0.0238,-0.7996,false
+all_adults,digital_apps,age_group,Above 55,3905,4016548.4641,23623.6612,0.0059,3992924.8029,0.0238,-1.7873,false
+all_adults,digital_apps,all,All,19750,28142068.5917,668491.4093,0.0238,27473577.1824,0.0238,0.0,false
+all_adults,digital_apps,county,Baringo,360,355688.567,5282.9437,0.0149,350405.6233,0.0238,-0.8901,false
+all_adults,digital_apps,county,Bomet,499,477064.973,7291.988,0.0153,469772.985,0.0238,-0.8469,false
+all_adults,digital_apps,county,Bungoma,495,854632.3786,12177.3456,0.0142,842455.0331,0.0238,-0.9506,false
+all_adults,digital_apps,county,Busia,369,481049.2494,7288.7109,0.0152,473760.5385,0.0238,-0.8602,false
+all_adults,digital_apps,county,Elgeyo-Marakwet,411,251049.7116,7616.5424,0.0303,243433.1693,0.0238,0.6585,false
+all_adults,digital_apps,county,Embu,467,405564.1153,7481.1488,0.0184,398082.9665,0.0238,-0.5308,false
+all_adults,digital_apps,county,Garissa,282,427934.5739,309.6114,0.0007,427624.9625,0.0238,-2.3031,false
+all_adults,digital_apps,county,Homabay,462,594237.141,6429.1658,0.0108,587807.9751,0.0238,-1.2935,false
+all_adults,digital_apps,county,Isiolo,277,152207.825,865.9494,0.0057,151341.8755,0.0238,-1.8065,false
+all_adults,digital_apps,county,Kajiado,404,722562.6998,34866.2812,0.0483,687696.4186,0.0238,2.4499,false
+all_adults,digital_apps,county,Kakamega,539,1006907.1142,16957.2014,0.0168,989949.9128,0.0238,-0.6913,false
+all_adults,digital_apps,county,Kericho,433,511505.0319,12190.9966,0.0238,499314.0352,0.0238,0.0079,false
+all_adults,digital_apps,county,Kiambu,518,1723743.0858,117909.6234,0.0684,1605833.4623,0.0238,4.4649,false
+all_adults,digital_apps,county,Kilifi,504,806712.7777,11314.3156,0.014,795398.4621,0.0238,-0.9729,false
+all_adults,digital_apps,county,Kirinyaga,498,427716.5776,6712.3843,0.0157,421004.1933,0.0238,-0.8061,false
+all_adults,digital_apps,county,Kisii,486,703778.4032,3645.1069,0.0052,700133.2963,0.0238,-1.8575,false
+all_adults,digital_apps,county,Kisumu,489,674363.2225,15184.151,0.0225,659179.0715,0.0238,-0.1238,false
+all_adults,digital_apps,county,Kitui,396,645462.4421,6721.436,0.0104,638741.0061,0.0238,-1.3341,false
+all_adults,digital_apps,county,Kwale,359,463991.5198,7340.573,0.0158,456650.9468,0.0238,-0.7934,false
+all_adults,digital_apps,county,Laikipia,361,315296.6932,2207.2885,0.007,313089.4047,0.0238,-1.6753,false
+all_adults,digital_apps,county,Lamu,239,93092.0178,0.0,0.0,93092.0178,0.0238,-2.3754,false
+all_adults,digital_apps,county,Machakos,477,911529.1895,11232.7481,0.0123,900296.4414,0.0238,-1.1431,false
+all_adults,digital_apps,county,Makueni,440,596725.5193,2164.5381,0.0036,594560.9812,0.0238,-2.0127,false
+all_adults,digital_apps,county,Mandera,348,360658.6492,0.0,0.0,360658.6492,0.0238,-2.3754,false
+all_adults,digital_apps,county,Marsabit,341,229903.1829,0.0,0.0,229903.1829,0.0238,-2.3754,false
+all_adults,digital_apps,county,Meru,611,957274.1252,16061.0317,0.0168,941213.0935,0.0238,-0.6976,false
+all_adults,digital_apps,county,Migori,511,583081.0312,11733.8053,0.0201,571347.2259,0.0238,-0.363,false
+all_adults,digital_apps,county,Mombasa,412,836395.571,54641.9338,0.0653,781753.6371,0.0238,4.1576,false
+all_adults,digital_apps,county,Murang'a,493,686152.1427,9587.8656,0.014,676564.2771,0.0238,-0.9781,false
+all_adults,digital_apps,county,Nairobi City,613,3127758.3552,101887.2865,0.0326,3025871.0687,0.0238,0.8821,false
+all_adults,digital_apps,county,Nakuru,542,1322608.9185,29490.9949,0.0223,1293117.9236,0.0238,-0.1457,false
+all_adults,digital_apps,county,Nandi,450,509820.4844,11884.5357,0.0233,497935.9487,0.0238,-0.0443,false
+all_adults,digital_apps,county,Narok,385,577188.7596,18396.2472,0.0319,558792.5123,0.0238,0.8118,false
+all_adults,digital_apps,county,Nyamira,463,350968.5193,2498.7577,0.0071,348469.7616,0.0238,-1.6635,false
+all_adults,digital_apps,county,Nyandarua,406,399887.5015,4722.5205,0.0118,395164.9809,0.0238,-1.1945,false
+all_adults,digital_apps,county,Nyeri,450,541745.3679,16448.209,0.0304,525297.1589,0.0238,0.6607,false
+all_adults,digital_apps,county,Samburu,299,155103.6455,82.2409,0.0005,155021.4046,0.0238,-2.3224,false
+all_adults,digital_apps,county,Siaya,393,548128.5248,2151.6614,0.0039,545976.8634,0.0238,-1.9829,false
+all_adults,digital_apps,county,Taita-Taveta,374,217575.7223,961.2016,0.0044,216614.5207,0.0238,-1.9336,false
+all_adults,digital_apps,county,Tana River,307,162130.6529,0.0,0.0,162130.6529,0.0238,-2.3754,false
+all_adults,digital_apps,county,Tharaka-Nithi,405,250143.9039,5882.7599,0.0235,244261.144,0.0238,-0.0237,false
+all_adults,digital_apps,county,Trans Nzoia,149,534486.2565,8332.0791,0.0156,526154.1774,0.0238,-0.8165,false
+all_adults,digital_apps,county,Turkana,388,486734.4692,2845.579,0.0058,483888.8902,0.0238,-1.7908,false
+all_adults,digital_apps,county,Uasin Gishu,517,716955.2169,51386.2793,0.0717,665568.9376,0.0238,4.7919,false
+all_adults,digital_apps,county,Vihiga,403,332080.8641,9853.378,0.0297,322227.4861,0.0238,0.5917,false
+all_adults,digital_apps,county,Wajir,376,364640.4097,4981.1125,0.0137,359659.2972,0.0238,-1.0094,false
+all_adults,digital_apps,county,West Pokot,349,287831.4883,1471.8794,0.0051,286359.6089,0.0238,-1.864,false
+all_adults,digital_apps,education,95,1,973.5078,0.0,0.0,973.5078,0.0238,-2.3754,true
+all_adults,digital_apps,education,Completed technical training after secondary school,1421,2367653.4672,187753.5829,0.0793,2179899.8843,0.0238,5.5545,false
+all_adults,digital_apps,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.0238,-2.3754,true
+all_adults,digital_apps,education,None,3021,2745941.3393,320.1253,0.0001,2745621.2139,0.0238,-2.3638,false
+all_adults,digital_apps,education,Other (Specify),2,2656.4397,0.0,0.0,2656.4397,0.0238,-2.3754,true
+all_adults,digital_apps,education,Primary completed,3802,5223129.3508,72435.2773,0.0139,5150694.0734,0.0238,-0.9886,false
+all_adults,digital_apps,education,Refused to Answer (DO NOT READ OUT),3,1799.2491,0.0,0.0,1799.2491,0.0238,-2.3754,true
+all_adults,digital_apps,education,Secondary completed,4063,6620476.5149,178659.8448,0.027,6441816.6701,0.0238,0.3232,false
+all_adults,digital_apps,education,Some primary,3567,4602544.3325,38423.1504,0.0083,4564121.182,0.0238,-1.5406,false
+all_adults,digital_apps,education,Some secondary,2045,3187036.4105,41004.0596,0.0129,3146032.3509,0.0238,-1.0888,false
+all_adults,digital_apps,education,Some technical training after secondary school,491,876831.186,27615.2151,0.0315,849215.9709,0.0238,0.774,false
+all_adults,digital_apps,education,Some university,344,842415.4256,44568.1147,0.0529,797847.3109,0.0238,2.9151,false
+all_adults,digital_apps,education,University completed,988,1666465.0806,77712.0392,0.0466,1588753.0414,0.0238,2.2879,false
+all_adults,digital_apps,sex,Female,11739,14493608.7579,304772.1401,0.021,14188836.6178,0.0238,-0.2726,false
+all_adults,digital_apps,sex,Male,8011,13648459.8338,363719.2692,0.0266,13284740.5646,0.0238,0.2895,false
+all_adults,digital_credit,age_group,18-25,3997,7869764.6248,1993078.9308,0.2533,5876685.6939,0.2959,-4.265,false
+all_adults,digital_credit,age_group,26-35,5361,8007561.237,3229016.4636,0.4032,4778544.7734,0.2959,10.7338,false
+all_adults,digital_credit,age_group,36-45,3942,5235668.4683,1840239.9357,0.3515,3395428.5326,0.2959,5.5574,false
+all_adults,digital_credit,age_group,46-55,2545,3012525.7976,800186.4299,0.2656,2212339.3677,0.2959,-3.0288,false
+all_adults,digital_credit,age_group,Above 55,3905,4016548.4641,464931.3096,0.1158,3551617.1545,0.2959,-18.0154,false
+all_adults,digital_credit,all,All,19750,28142068.5917,8327453.0696,0.2959,19814615.5221,0.2959,0.0,false
+all_adults,digital_credit,county,Baringo,360,355688.567,124361.5042,0.3496,231327.0628,0.2959,5.3728,false
+all_adults,digital_credit,county,Bomet,499,477064.973,61787.101,0.1295,415277.872,0.2959,-16.6393,false
+all_adults,digital_credit,county,Bungoma,495,854632.3786,225211.3831,0.2635,629420.9955,0.2959,-3.2389,false
+all_adults,digital_credit,county,Busia,369,481049.2494,105039.3739,0.2184,376009.8754,0.2959,-7.7553,false
+all_adults,digital_credit,county,Elgeyo-Marakwet,411,251049.7116,107791.1852,0.4294,143258.5264,0.2959,13.3454,false
+all_adults,digital_credit,county,Embu,467,405564.1153,112245.9741,0.2768,293318.1412,0.2959,-1.9143,false
+all_adults,digital_credit,county,Garissa,282,427934.5739,39113.7026,0.0914,388820.8712,0.2959,-20.4507,false
+all_adults,digital_credit,county,Homabay,462,594237.141,166447.7337,0.2801,427789.4072,0.2959,-1.5804,false
+all_adults,digital_credit,county,Isiolo,277,152207.825,33497.9208,0.2201,118709.9042,0.2959,-7.5827,false
+all_adults,digital_credit,county,Kajiado,404,722562.6998,288894.2163,0.3998,433668.4835,0.2959,10.3911,false
+all_adults,digital_credit,county,Kakamega,539,1006907.1142,365994.5516,0.3635,640912.5625,0.2959,6.7576,false
+all_adults,digital_credit,county,Kericho,433,511505.0319,157510.1293,0.3079,353994.9026,0.2959,1.2027,false
+all_adults,digital_credit,county,Kiambu,518,1723743.0858,795090.3537,0.4613,928652.7321,0.2959,16.535,false
+all_adults,digital_credit,county,Kilifi,504,806712.7777,147218.5155,0.1825,659494.2622,0.2959,-11.3416,false
+all_adults,digital_credit,county,Kirinyaga,498,427716.5776,110761.619,0.259,316954.9586,0.2959,-3.6947,false
+all_adults,digital_credit,county,Kisii,486,703778.4032,245828.139,0.3493,457950.2643,0.2959,5.339,false
+all_adults,digital_credit,county,Kisumu,489,674363.2225,161108.3753,0.2389,513254.8473,0.2959,-5.7003,false
+all_adults,digital_credit,county,Kitui,396,645462.4421,106323.9252,0.1647,539138.517,0.2959,-13.1182,false
+all_adults,digital_credit,county,Kwale,359,463991.5198,129028.713,0.2781,334962.8069,0.2959,-1.7823,false
+all_adults,digital_credit,county,Laikipia,361,315296.6932,49071.9859,0.1556,266224.7073,0.2959,-14.027,false
+all_adults,digital_credit,county,Lamu,239,93092.0178,13343.1062,0.1433,79748.9116,0.2959,-15.2575,false
+all_adults,digital_credit,county,Machakos,477,911529.1895,326219.2217,0.3579,585309.9678,0.2959,6.1974,false
+all_adults,digital_credit,county,Makueni,440,596725.5193,106700.1906,0.1788,490025.3287,0.2959,-11.7098,false
+all_adults,digital_credit,county,Mandera,348,360658.6492,39110.613,0.1084,321548.0363,0.2959,-18.7465,false
+all_adults,digital_credit,county,Marsabit,341,229903.1829,8178.5996,0.0356,221724.5833,0.2959,-26.0334,false
+all_adults,digital_credit,county,Meru,611,957274.1252,239753.9166,0.2505,717520.2086,0.2959,-4.5453,false
+all_adults,digital_credit,county,Migori,511,583081.0312,206191.0998,0.3536,376889.9313,0.2959,5.7716,false
+all_adults,digital_credit,county,Mombasa,412,836395.571,344173.0032,0.4115,492222.5678,0.2959,11.5588,false
+all_adults,digital_credit,county,Murang'a,493,686152.1427,193355.6244,0.2818,492796.5183,0.2959,-1.4111,false
+all_adults,digital_credit,county,Nairobi City,613,3127758.3552,1164323.7181,0.3723,1963434.6371,0.2959,7.6347,false
+all_adults,digital_credit,county,Nakuru,542,1322608.9185,397160.5117,0.3003,925448.4069,0.2959,0.4378,false
+all_adults,digital_credit,county,Nandi,450,509820.4844,230489.3445,0.4521,279331.1398,0.2959,15.6191,false
+all_adults,digital_credit,county,Narok,385,577188.7596,137368.8634,0.238,439819.8962,0.2959,-5.7911,false
+all_adults,digital_credit,county,Nyamira,463,350968.5193,29217.4867,0.0832,321751.0326,0.2959,-21.2659,false
+all_adults,digital_credit,county,Nyandarua,406,399887.5015,61450.4658,0.1537,338437.0356,0.2959,-14.2238,false
+all_adults,digital_credit,county,Nyeri,450,541745.3679,146143.4279,0.2698,395601.9401,0.2959,-2.6144,false
+all_adults,digital_credit,county,Samburu,299,155103.6455,24255.9019,0.1564,130847.7436,0.2959,-13.9523,false
+all_adults,digital_credit,county,Siaya,393,548128.5248,128740.7559,0.2349,419387.7689,0.2959,-6.1034,false
+all_adults,digital_credit,county,Taita-Taveta,374,217575.7223,35705.754,0.1641,181869.9684,0.2959,-13.18,false
+all_adults,digital_credit,county,Tana River,307,162130.6529,20663.3029,0.1274,141467.35,0.2959,-16.8459,false
+all_adults,digital_credit,county,Tharaka-Nithi,405,250143.9039,76650.0771,0.3064,173493.8268,0.2959,1.0516,false
+all_adults,digital_credit,county,Trans Nzoia,149,534486.2565,207429.537,0.3881,327056.7195,0.2959,9.2184,false
+all_adults,digital_credit,county,Turkana,388,486734.4692,118595.3286,0.2437,368139.1406,0.2959,-5.2253,false
+all_adults,digital_credit,county,Uasin Gishu,517,716955.2169,314113.9128,0.4381,402841.304,0.2959,14.2214,false
+all_adults,digital_credit,county,Vihiga,403,332080.8641,118506.8448,0.3569,213574.0193,0.2959,6.0954,false
+all_adults,digital_credit,county,Wajir,376,364640.4097,41804.3194,0.1146,322836.0903,0.2959,-18.1262,false
+all_adults,digital_credit,county,West Pokot,349,287831.4883,65481.7397,0.2275,222349.7486,0.2959,-6.8407,false
+all_adults,digital_credit,education,95,1,973.5078,0.0,0.0,973.5078,0.2959,-29.5908,true
+all_adults,digital_credit,education,Completed technical training after secondary school,1421,2367653.4672,1021100.3282,0.4313,1346553.139,0.2959,13.5363,false
+all_adults,digital_credit,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.2959,-29.5908,true
+all_adults,digital_credit,education,None,3021,2745941.3393,210639.3771,0.0767,2535301.9621,0.2959,-21.9198,false
+all_adults,digital_credit,education,Other (Specify),2,2656.4397,1561.0399,0.5876,1095.3998,0.2959,29.1736,true
+all_adults,digital_credit,education,Primary completed,3802,5223129.3508,1708931.8857,0.3272,3514197.4651,0.2959,3.1278,false
+all_adults,digital_credit,education,Refused to Answer (DO NOT READ OUT),3,1799.2491,448.4494,0.2492,1350.7997,0.2959,-4.6665,true
+all_adults,digital_credit,education,Secondary completed,4063,6620476.5149,2358786.1589,0.3563,4261690.3559,0.2959,6.0379,false
+all_adults,digital_credit,education,Some primary,3567,4602544.3325,970262.5223,0.2108,3632281.8102,0.2959,-8.5098,false
+all_adults,digital_credit,education,Some secondary,2045,3187036.4105,840983.8612,0.2639,2346052.5492,0.2959,-3.2031,false
+all_adults,digital_credit,education,Some technical training after secondary school,491,876831.186,361876.3286,0.4127,514954.8574,0.2959,11.6802,false
+all_adults,digital_credit,education,Some university,344,842415.4256,360915.1263,0.4284,481500.2993,0.2959,13.2521,false
+all_adults,digital_credit,education,University completed,988,1666465.0806,491947.9918,0.2952,1174517.0888,0.2959,-0.0703,false
+all_adults,digital_credit,sex,Female,11739,14493608.7579,3880730.8759,0.2678,10612877.882,0.2959,-2.8153,false
+all_adults,digital_credit,sex,Male,8011,13648459.8338,4446722.1936,0.3258,9201737.6402,0.2959,2.9896,false
 all_adults,formal_access,age_group,18-25,3997,7869764.6248,5433508.6224,0.6904,2436256.0024,0.8483,-15.7896,false
 all_adults,formal_access,age_group,26-35,5361,8007561.237,7443393.8865,0.9295,564167.3505,0.8483,8.1222,false
 all_adults,formal_access,age_group,36-45,3942,5235668.4683,4851041.7536,0.9265,384626.7147,0.8483,7.8213,false
@@ -815,74 +883,142 @@ mobile_money_users,bank,education,Some university,339,831764.7379,684457.7667,0.
 mobile_money_users,bank,education,University completed,981,1644508.0041,1540533.8511,0.9368,103974.1529,0.5757,36.1115,false
 mobile_money_users,bank,sex,Female,10385,12867512.7461,6560568.6849,0.5099,6306944.0611,0.5757,-6.5805,false
 mobile_money_users,bank,sex,Male,7164,12246277.7686,7896441.2818,0.6448,4349836.4868,0.5757,6.9143,false
-mobile_money_users,digital_credit,age_group,18-25,3323,6503476.3942,100569.2005,0.0155,6402907.1937,0.0265,-1.104,false
-mobile_money_users,digital_credit,age_group,26-35,5034,7615915.7101,319369.2574,0.0419,7296546.4527,0.0265,1.543,false
-mobile_money_users,digital_credit,age_group,36-45,3681,4935694.7059,174581.7725,0.0354,4761112.9333,0.0265,0.8867,false
-mobile_money_users,digital_credit,age_group,46-55,2348,2788355.4328,47472.6878,0.017,2740882.745,0.0265,-0.9479,false
-mobile_money_users,digital_credit,age_group,Above 55,3163,3270348.2717,23623.6612,0.0072,3246724.6105,0.0265,-1.928,false
-mobile_money_users,digital_credit,all,All,17549,25113790.5147,665616.5795,0.0265,24448173.9352,0.0265,0.0,false
-mobile_money_users,digital_credit,county,Baringo,251,243847.9608,5282.9437,0.0217,238565.0171,0.0265,-0.4839,false
-mobile_money_users,digital_credit,county,Bomet,439,412883.9028,7291.988,0.0177,405591.9148,0.0265,-0.8843,false
-mobile_money_users,digital_credit,county,Bungoma,454,780142.2781,12177.3456,0.0156,767964.9325,0.0265,-1.0895,false
-mobile_money_users,digital_credit,county,Busia,310,392366.9701,7288.7109,0.0186,385078.2592,0.0265,-0.7928,false
-mobile_money_users,digital_credit,county,Elgeyo-Marakwet,364,215230.7173,7616.5424,0.0354,207614.175,0.0265,0.8884,false
-mobile_money_users,digital_credit,county,Embu,447,391709.9462,7481.1488,0.0191,384228.7974,0.0265,-0.7405,false
-mobile_money_users,digital_credit,county,Garissa,251,383165.5278,309.6114,0.0008,382855.9164,0.0265,-2.5696,false
-mobile_money_users,digital_credit,county,Homabay,413,533415.6445,6429.1658,0.0121,526986.4786,0.0265,-1.4451,false
-mobile_money_users,digital_credit,county,Isiolo,257,142006.2323,865.9494,0.0061,141140.2829,0.0265,-2.0406,false
-mobile_money_users,digital_credit,county,Kajiado,363,652420.1931,34866.2812,0.0534,617553.9118,0.0265,2.6937,false
-mobile_money_users,digital_credit,county,Kakamega,478,892486.2196,16957.2014,0.019,875529.0182,0.0265,-0.7504,false
-mobile_money_users,digital_credit,county,Kericho,361,415830.7833,12190.9966,0.0293,403639.7866,0.0265,0.2813,false
-mobile_money_users,digital_credit,county,Kiambu,487,1621703.9453,117909.6234,0.0727,1503794.3219,0.0265,4.6203,false
-mobile_money_users,digital_credit,county,Kilifi,431,694461.2426,11314.3156,0.0163,683146.9269,0.0265,-1.0212,false
-mobile_money_users,digital_credit,county,Kirinyaga,473,409708.661,6712.3843,0.0164,402996.2767,0.0265,-1.0121,false
-mobile_money_users,digital_credit,county,Kisii,432,636565.9919,3645.1069,0.0057,632920.8849,0.0265,-2.0778,false
-mobile_money_users,digital_credit,county,Kisumu,457,635566.7881,15184.151,0.0239,620382.6371,0.0265,-0.2613,false
-mobile_money_users,digital_credit,county,Kitui,357,543162.4813,6721.436,0.0124,536441.0453,0.0265,-1.4129,false
-mobile_money_users,digital_credit,county,Kwale,331,414567.5445,7340.573,0.0177,407226.9715,0.0265,-0.8797,false
-mobile_money_users,digital_credit,county,Laikipia,332,282919.7942,2207.2885,0.0078,280712.5057,0.0265,-1.8702,false
-mobile_money_users,digital_credit,county,Lamu,214,83476.2553,0.0,0.0,83476.2553,0.0265,-2.6504,false
-mobile_money_users,digital_credit,county,Machakos,435,819564.6677,11232.7481,0.0137,808331.9196,0.0265,-1.2798,false
-mobile_money_users,digital_credit,county,Makueni,412,549977.5743,2164.5381,0.0039,547813.0362,0.0265,-2.2568,false
-mobile_money_users,digital_credit,county,Mandera,327,328065.6663,0.0,0.0,328065.6663,0.0265,-2.6504,false
-mobile_money_users,digital_credit,county,Marsabit,304,195822.1856,0.0,0.0,195822.1856,0.0265,-2.6504,false
-mobile_money_users,digital_credit,county,Meru,549,845715.439,15679.8696,0.0185,830035.5694,0.0265,-0.7964,false
-mobile_money_users,digital_credit,county,Migori,468,533242.1334,11733.8053,0.022,521508.3281,0.0265,-0.4499,false
-mobile_money_users,digital_credit,county,Mombasa,399,817042.0297,54641.9338,0.0669,762400.0958,0.0265,4.0374,false
-mobile_money_users,digital_credit,county,Murang'a,434,605445.7805,9256.1241,0.0153,596189.6565,0.0265,-1.1216,false
-mobile_money_users,digital_credit,county,Nairobi City,597,3018290.9434,101887.2865,0.0338,2916403.6569,0.0265,0.7253,false
-mobile_money_users,digital_credit,county,Nakuru,501,1220032.1783,29490.9949,0.0242,1190541.1834,0.0265,-0.2332,false
-mobile_money_users,digital_credit,county,Nandi,396,438570.0942,11884.5357,0.0271,426685.5585,0.0265,0.0594,false
-mobile_money_users,digital_credit,county,Narok,315,469314.2314,16234.321,0.0346,453079.9105,0.0265,0.8088,false
-mobile_money_users,digital_credit,county,Nyamira,415,301507.1512,2498.7577,0.0083,299008.3935,0.0265,-1.8216,false
-mobile_money_users,digital_credit,county,Nyandarua,383,368064.9968,4722.5205,0.0128,363342.4763,0.0265,-1.3673,false
-mobile_money_users,digital_credit,county,Nyeri,427,504278.6935,16448.209,0.0326,487830.4844,0.0265,0.6113,false
-mobile_money_users,digital_credit,county,Samburu,251,133512.53,82.2409,0.0006,133430.2891,0.0265,-2.5888,false
-mobile_money_users,digital_credit,county,Siaya,346,491050.0355,2151.6614,0.0044,488898.3741,0.0265,-2.2122,false
-mobile_money_users,digital_credit,county,Taita-Taveta,360,208819.3288,961.2016,0.0046,207858.1271,0.0265,-2.1901,false
-mobile_money_users,digital_credit,county,Tana River,255,137706.8288,0.0,0.0,137706.8288,0.0265,-2.6504,false
-mobile_money_users,digital_credit,county,Tharaka-Nithi,353,220764.7332,5882.7599,0.0266,214881.9733,0.0265,0.0143,false
-mobile_money_users,digital_credit,county,Trans Nzoia,121,406380.6097,8332.0791,0.0205,398048.5306,0.0265,-0.6001,false
-mobile_money_users,digital_credit,county,Turkana,264,326967.9497,2845.579,0.0087,324122.3708,0.0265,-1.7801,false
-mobile_money_users,digital_credit,county,Uasin Gishu,478,663023.9706,51386.2793,0.0775,611637.6913,0.0265,5.0999,false
-mobile_money_users,digital_credit,county,Vihiga,345,274350.9342,9853.378,0.0359,264497.5562,0.0265,0.9411,false
-mobile_money_users,digital_credit,county,Wajir,329,315898.7806,4981.1125,0.0158,310917.6681,0.0265,-1.0736,false
-mobile_money_users,digital_credit,county,West Pokot,183,142741.9684,1471.8794,0.0103,141270.089,0.0265,-1.6193,false
-mobile_money_users,digital_credit,education,95,1,973.5078,0.0,0.0,973.5078,0.0265,-2.6504,true
-mobile_money_users,digital_credit,education,Completed technical training after secondary school,1398,2313405.8912,187753.5829,0.0812,2125652.3083,0.0265,5.4655,false
-mobile_money_users,digital_credit,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.0265,-2.6504,true
-mobile_money_users,digital_credit,education,None,2288,2042966.9551,320.1253,0.0002,2042646.8297,0.0265,-2.6347,false
-mobile_money_users,digital_credit,education,Other (Specify),2,2656.4397,0.0,0.0,2656.4397,0.0265,-2.6504,true
-mobile_money_users,digital_credit,education,Primary completed,3490,4735238.0755,72435.2773,0.0153,4662802.7982,0.0265,-1.1207,false
-mobile_money_users,digital_credit,education,Refused to Answer (DO NOT READ OUT),2,863.6901,0.0,0.0,863.6901,0.0265,-2.6504,true
-mobile_money_users,digital_credit,education,Secondary completed,3837,6243969.8839,176166.177,0.0282,6067803.7069,0.0265,0.171,false
-mobile_money_users,digital_credit,education,Some primary,3019,3882902.0469,38423.1504,0.0099,3844478.8965,0.0265,-1.6609,false
-mobile_money_users,digital_credit,education,Some secondary,1719,2578518.0953,41004.0596,0.0159,2537514.0357,0.0265,-1.0602,false
-mobile_money_users,digital_credit,education,Some technical training after secondary school,471,831876.8994,27615.2151,0.0332,804261.6843,0.0265,0.6692,false
-mobile_money_users,digital_credit,education,Some university,339,831764.7379,44568.1147,0.0536,787196.6232,0.0265,2.7079,false
-mobile_money_users,digital_credit,education,University completed,981,1644508.0041,77330.8771,0.047,1567177.127,0.0265,2.052,false
-mobile_money_users,digital_credit,sex,Female,10385,12867512.7461,304059.2365,0.0236,12563453.5096,0.0265,-0.2874,false
-mobile_money_users,digital_credit,sex,Male,7164,12246277.7686,361557.343,0.0295,11884720.4256,0.0265,0.302,false
+mobile_money_users,digital_apps,age_group,18-25,3323,6503476.3942,100569.2005,0.0155,6402907.1937,0.0265,-1.104,false
+mobile_money_users,digital_apps,age_group,26-35,5034,7615915.7101,319369.2574,0.0419,7296546.4527,0.0265,1.543,false
+mobile_money_users,digital_apps,age_group,36-45,3681,4935694.7059,174581.7725,0.0354,4761112.9333,0.0265,0.8867,false
+mobile_money_users,digital_apps,age_group,46-55,2348,2788355.4328,47472.6878,0.017,2740882.745,0.0265,-0.9479,false
+mobile_money_users,digital_apps,age_group,Above 55,3163,3270348.2717,23623.6612,0.0072,3246724.6105,0.0265,-1.928,false
+mobile_money_users,digital_apps,all,All,17549,25113790.5147,665616.5795,0.0265,24448173.9352,0.0265,0.0,false
+mobile_money_users,digital_apps,county,Baringo,251,243847.9608,5282.9437,0.0217,238565.0171,0.0265,-0.4839,false
+mobile_money_users,digital_apps,county,Bomet,439,412883.9028,7291.988,0.0177,405591.9148,0.0265,-0.8843,false
+mobile_money_users,digital_apps,county,Bungoma,454,780142.2781,12177.3456,0.0156,767964.9325,0.0265,-1.0895,false
+mobile_money_users,digital_apps,county,Busia,310,392366.9701,7288.7109,0.0186,385078.2592,0.0265,-0.7928,false
+mobile_money_users,digital_apps,county,Elgeyo-Marakwet,364,215230.7173,7616.5424,0.0354,207614.175,0.0265,0.8884,false
+mobile_money_users,digital_apps,county,Embu,447,391709.9462,7481.1488,0.0191,384228.7974,0.0265,-0.7405,false
+mobile_money_users,digital_apps,county,Garissa,251,383165.5278,309.6114,0.0008,382855.9164,0.0265,-2.5696,false
+mobile_money_users,digital_apps,county,Homabay,413,533415.6445,6429.1658,0.0121,526986.4786,0.0265,-1.4451,false
+mobile_money_users,digital_apps,county,Isiolo,257,142006.2323,865.9494,0.0061,141140.2829,0.0265,-2.0406,false
+mobile_money_users,digital_apps,county,Kajiado,363,652420.1931,34866.2812,0.0534,617553.9118,0.0265,2.6937,false
+mobile_money_users,digital_apps,county,Kakamega,478,892486.2196,16957.2014,0.019,875529.0182,0.0265,-0.7504,false
+mobile_money_users,digital_apps,county,Kericho,361,415830.7833,12190.9966,0.0293,403639.7866,0.0265,0.2813,false
+mobile_money_users,digital_apps,county,Kiambu,487,1621703.9453,117909.6234,0.0727,1503794.3219,0.0265,4.6203,false
+mobile_money_users,digital_apps,county,Kilifi,431,694461.2426,11314.3156,0.0163,683146.9269,0.0265,-1.0212,false
+mobile_money_users,digital_apps,county,Kirinyaga,473,409708.661,6712.3843,0.0164,402996.2767,0.0265,-1.0121,false
+mobile_money_users,digital_apps,county,Kisii,432,636565.9919,3645.1069,0.0057,632920.8849,0.0265,-2.0778,false
+mobile_money_users,digital_apps,county,Kisumu,457,635566.7881,15184.151,0.0239,620382.6371,0.0265,-0.2613,false
+mobile_money_users,digital_apps,county,Kitui,357,543162.4813,6721.436,0.0124,536441.0453,0.0265,-1.4129,false
+mobile_money_users,digital_apps,county,Kwale,331,414567.5445,7340.573,0.0177,407226.9715,0.0265,-0.8797,false
+mobile_money_users,digital_apps,county,Laikipia,332,282919.7942,2207.2885,0.0078,280712.5057,0.0265,-1.8702,false
+mobile_money_users,digital_apps,county,Lamu,214,83476.2553,0.0,0.0,83476.2553,0.0265,-2.6504,false
+mobile_money_users,digital_apps,county,Machakos,435,819564.6677,11232.7481,0.0137,808331.9196,0.0265,-1.2798,false
+mobile_money_users,digital_apps,county,Makueni,412,549977.5743,2164.5381,0.0039,547813.0362,0.0265,-2.2568,false
+mobile_money_users,digital_apps,county,Mandera,327,328065.6663,0.0,0.0,328065.6663,0.0265,-2.6504,false
+mobile_money_users,digital_apps,county,Marsabit,304,195822.1856,0.0,0.0,195822.1856,0.0265,-2.6504,false
+mobile_money_users,digital_apps,county,Meru,549,845715.439,15679.8696,0.0185,830035.5694,0.0265,-0.7964,false
+mobile_money_users,digital_apps,county,Migori,468,533242.1334,11733.8053,0.022,521508.3281,0.0265,-0.4499,false
+mobile_money_users,digital_apps,county,Mombasa,399,817042.0297,54641.9338,0.0669,762400.0958,0.0265,4.0374,false
+mobile_money_users,digital_apps,county,Murang'a,434,605445.7805,9256.1241,0.0153,596189.6565,0.0265,-1.1216,false
+mobile_money_users,digital_apps,county,Nairobi City,597,3018290.9434,101887.2865,0.0338,2916403.6569,0.0265,0.7253,false
+mobile_money_users,digital_apps,county,Nakuru,501,1220032.1783,29490.9949,0.0242,1190541.1834,0.0265,-0.2332,false
+mobile_money_users,digital_apps,county,Nandi,396,438570.0942,11884.5357,0.0271,426685.5585,0.0265,0.0594,false
+mobile_money_users,digital_apps,county,Narok,315,469314.2314,16234.321,0.0346,453079.9105,0.0265,0.8088,false
+mobile_money_users,digital_apps,county,Nyamira,415,301507.1512,2498.7577,0.0083,299008.3935,0.0265,-1.8216,false
+mobile_money_users,digital_apps,county,Nyandarua,383,368064.9968,4722.5205,0.0128,363342.4763,0.0265,-1.3673,false
+mobile_money_users,digital_apps,county,Nyeri,427,504278.6935,16448.209,0.0326,487830.4844,0.0265,0.6113,false
+mobile_money_users,digital_apps,county,Samburu,251,133512.53,82.2409,0.0006,133430.2891,0.0265,-2.5888,false
+mobile_money_users,digital_apps,county,Siaya,346,491050.0355,2151.6614,0.0044,488898.3741,0.0265,-2.2122,false
+mobile_money_users,digital_apps,county,Taita-Taveta,360,208819.3288,961.2016,0.0046,207858.1271,0.0265,-2.1901,false
+mobile_money_users,digital_apps,county,Tana River,255,137706.8288,0.0,0.0,137706.8288,0.0265,-2.6504,false
+mobile_money_users,digital_apps,county,Tharaka-Nithi,353,220764.7332,5882.7599,0.0266,214881.9733,0.0265,0.0143,false
+mobile_money_users,digital_apps,county,Trans Nzoia,121,406380.6097,8332.0791,0.0205,398048.5306,0.0265,-0.6001,false
+mobile_money_users,digital_apps,county,Turkana,264,326967.9497,2845.579,0.0087,324122.3708,0.0265,-1.7801,false
+mobile_money_users,digital_apps,county,Uasin Gishu,478,663023.9706,51386.2793,0.0775,611637.6913,0.0265,5.0999,false
+mobile_money_users,digital_apps,county,Vihiga,345,274350.9342,9853.378,0.0359,264497.5562,0.0265,0.9411,false
+mobile_money_users,digital_apps,county,Wajir,329,315898.7806,4981.1125,0.0158,310917.6681,0.0265,-1.0736,false
+mobile_money_users,digital_apps,county,West Pokot,183,142741.9684,1471.8794,0.0103,141270.089,0.0265,-1.6193,false
+mobile_money_users,digital_apps,education,95,1,973.5078,0.0,0.0,973.5078,0.0265,-2.6504,true
+mobile_money_users,digital_apps,education,Completed technical training after secondary school,1398,2313405.8912,187753.5829,0.0812,2125652.3083,0.0265,5.4655,false
+mobile_money_users,digital_apps,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.0265,-2.6504,true
+mobile_money_users,digital_apps,education,None,2288,2042966.9551,320.1253,0.0002,2042646.8297,0.0265,-2.6347,false
+mobile_money_users,digital_apps,education,Other (Specify),2,2656.4397,0.0,0.0,2656.4397,0.0265,-2.6504,true
+mobile_money_users,digital_apps,education,Primary completed,3490,4735238.0755,72435.2773,0.0153,4662802.7982,0.0265,-1.1207,false
+mobile_money_users,digital_apps,education,Refused to Answer (DO NOT READ OUT),2,863.6901,0.0,0.0,863.6901,0.0265,-2.6504,true
+mobile_money_users,digital_apps,education,Secondary completed,3837,6243969.8839,176166.177,0.0282,6067803.7069,0.0265,0.171,false
+mobile_money_users,digital_apps,education,Some primary,3019,3882902.0469,38423.1504,0.0099,3844478.8965,0.0265,-1.6609,false
+mobile_money_users,digital_apps,education,Some secondary,1719,2578518.0953,41004.0596,0.0159,2537514.0357,0.0265,-1.0602,false
+mobile_money_users,digital_apps,education,Some technical training after secondary school,471,831876.8994,27615.2151,0.0332,804261.6843,0.0265,0.6692,false
+mobile_money_users,digital_apps,education,Some university,339,831764.7379,44568.1147,0.0536,787196.6232,0.0265,2.7079,false
+mobile_money_users,digital_apps,education,University completed,981,1644508.0041,77330.8771,0.047,1567177.127,0.0265,2.052,false
+mobile_money_users,digital_apps,sex,Female,10385,12867512.7461,304059.2365,0.0236,12563453.5096,0.0265,-0.2874,false
+mobile_money_users,digital_apps,sex,Male,7164,12246277.7686,361557.343,0.0295,11884720.4256,0.0265,0.302,false
+mobile_money_users,digital_credit,age_group,18-25,3323,6503476.3942,1957225.7772,0.301,4546250.6169,0.3276,-2.6697,false
+mobile_money_users,digital_credit,age_group,26-35,5034,7615915.7101,3196667.4523,0.4197,4419248.2578,0.3276,9.2088,false
+mobile_money_users,digital_credit,age_group,36-45,3681,4935694.7059,1820478.0795,0.3688,3115216.6263,0.3276,4.1192,false
+mobile_money_users,digital_credit,age_group,46-55,2348,2788355.4328,791392.7012,0.2838,1996962.7317,0.3276,-4.3827,false
+mobile_money_users,digital_credit,age_group,Above 55,3163,3270348.2717,462701.1531,0.1415,2807647.1186,0.3276,-18.6164,false
+mobile_money_users,digital_credit,all,All,17549,25113790.5147,8228465.1634,0.3276,16885325.3513,0.3276,0.0,false
+mobile_money_users,digital_credit,county,Baringo,251,243847.9608,96264.2995,0.3948,147583.6613,0.3276,6.7125,false
+mobile_money_users,digital_credit,county,Bomet,439,412883.9028,61787.101,0.1496,351096.8019,0.3276,-17.8,false
+mobile_money_users,digital_credit,county,Bungoma,454,780142.2781,221214.909,0.2836,558927.3691,0.3276,-4.409,false
+mobile_money_users,digital_credit,county,Busia,310,392366.9701,104382.6575,0.266,287984.3126,0.3276,-6.1614,false
+mobile_money_users,digital_credit,county,Elgeyo-Marakwet,364,215230.7173,107212.1745,0.4981,108018.5428,0.3276,17.0479,false
+mobile_money_users,digital_credit,county,Embu,447,391709.9462,112245.9741,0.2866,279463.9721,0.3276,-4.1093,false
+mobile_money_users,digital_credit,county,Garissa,251,383165.5278,39113.7026,0.1021,344051.8251,0.3276,-22.5567,false
+mobile_money_users,digital_credit,county,Homabay,413,533415.6445,166447.7337,0.312,366967.9107,0.3276,-1.5606,false
+mobile_money_users,digital_credit,county,Isiolo,257,142006.2323,32516.2954,0.229,109489.9369,0.3276,-9.8669,false
+mobile_money_users,digital_credit,county,Kajiado,363,652420.1931,288894.2163,0.4428,363525.9767,0.3276,11.5157,false
+mobile_money_users,digital_credit,county,Kakamega,478,892486.2196,360541.5213,0.404,531944.6982,0.3276,7.6327,false
+mobile_money_users,digital_credit,county,Kericho,361,415830.7833,155112.3676,0.373,260718.4157,0.3276,4.5371,false
+mobile_money_users,digital_credit,county,Kiambu,487,1621703.9453,776914.861,0.4791,844789.0844,0.3276,15.1426,false
+mobile_money_users,digital_credit,county,Kilifi,431,694461.2426,146753.8748,0.2113,547707.3678,0.3276,-11.6327,false
+mobile_money_users,digital_credit,county,Kirinyaga,473,409708.661,110761.619,0.2703,298947.042,0.3276,-5.7305,false
+mobile_money_users,digital_credit,county,Kisii,432,636565.9919,245828.139,0.3862,390737.8529,0.3276,5.8531,false
+mobile_money_users,digital_credit,county,Kisumu,457,635566.7881,160809.1771,0.253,474757.611,0.3276,-7.463,false
+mobile_money_users,digital_credit,county,Kitui,357,543162.4813,106323.9252,0.1957,436838.5562,0.3276,-13.1898,false
+mobile_money_users,digital_credit,county,Kwale,331,414567.5445,129028.713,0.3112,285538.8316,0.3276,-1.641,false
+mobile_money_users,digital_credit,county,Laikipia,332,282919.7942,48510.9212,0.1715,234408.873,0.3276,-15.6182,false
+mobile_money_users,digital_credit,county,Lamu,214,83476.2553,13343.1062,0.1598,70133.1491,0.3276,-16.7804,false
+mobile_money_users,digital_credit,county,Machakos,435,819564.6677,319340.2528,0.3896,500224.4149,0.3276,6.1999,false
+mobile_money_users,digital_credit,county,Makueni,412,549977.5743,106700.1906,0.194,443277.3837,0.3276,-13.3639,false
+mobile_money_users,digital_credit,county,Mandera,327,328065.6663,39110.613,0.1192,288955.0533,0.3276,-20.8431,false
+mobile_money_users,digital_credit,county,Marsabit,304,195822.1856,6720.4789,0.0343,189101.7067,0.3276,-29.3328,false
+mobile_money_users,digital_credit,county,Meru,549,845715.439,237551.3543,0.2809,608164.0847,0.3276,-4.6759,false
+mobile_money_users,digital_credit,county,Migori,468,533242.1334,205755.8632,0.3859,327486.2702,0.3276,5.8211,false
+mobile_money_users,digital_credit,county,Mombasa,399,817042.0297,343345.3198,0.4202,473696.7099,0.3276,9.2582,false
+mobile_money_users,digital_credit,county,Murang'a,434,605445.7805,189929.095,0.3137,415516.6856,0.3276,-1.3946,false
+mobile_money_users,digital_credit,county,Nairobi City,597,3018290.9434,1160394.9918,0.3845,1857895.9515,0.3276,5.6807,false
+mobile_money_users,digital_credit,county,Nakuru,501,1220032.1783,397160.5117,0.3255,822871.6667,0.3276,-0.2114,false
+mobile_money_users,digital_credit,county,Nandi,396,438570.0942,224432.002,0.5117,214138.0922,0.3276,18.4088,false
+mobile_money_users,digital_credit,county,Narok,315,469314.2314,134293.621,0.2861,335020.6104,0.3276,-4.1499,false
+mobile_money_users,digital_credit,county,Nyamira,415,301507.1512,29217.4867,0.0969,272289.6646,0.3276,-23.0742,false
+mobile_money_users,digital_credit,county,Nyandarua,383,368064.9968,61450.4658,0.167,306614.531,0.3276,-16.0692,false
+mobile_money_users,digital_credit,county,Nyeri,427,504278.6935,146143.4279,0.2898,358135.2656,0.3276,-3.784,false
+mobile_money_users,digital_credit,county,Samburu,251,133512.53,24255.9019,0.1817,109256.6281,0.3276,-14.5972,false
+mobile_money_users,digital_credit,county,Siaya,346,491050.0355,128244.4816,0.2612,362805.5539,0.3276,-6.6484,false
+mobile_money_users,digital_credit,county,Taita-Taveta,360,208819.3288,35705.754,0.171,173113.5748,0.3276,-15.6659,false
+mobile_money_users,digital_credit,county,Tana River,255,137706.8288,20663.3029,0.1501,117043.526,0.3276,-17.7594,false
+mobile_money_users,digital_credit,county,Tharaka-Nithi,353,220764.7332,76650.0771,0.3472,144114.6562,0.3276,1.9555,false
+mobile_money_users,digital_credit,county,Trans Nzoia,121,406380.6097,206484.1679,0.5081,199896.4418,0.3276,18.0458,false
+mobile_money_users,digital_credit,county,Turkana,264,326967.9497,118595.3286,0.3627,208372.6211,0.3276,3.5065,false
+mobile_money_users,digital_credit,county,Uasin Gishu,478,663023.9706,312638.2069,0.4715,350385.7637,0.3276,14.3887,false
+mobile_money_users,digital_credit,county,Vihiga,345,274350.9342,118123.3133,0.4306,156227.6209,0.3276,10.2908,false
+mobile_money_users,digital_credit,county,Wajir,329,315898.7806,41804.3194,0.1323,274094.4612,0.3276,-19.5313,false
+mobile_money_users,digital_credit,county,West Pokot,183,142741.9684,59747.3468,0.4186,82994.6216,0.3276,9.0922,false
+mobile_money_users,digital_credit,education,95,1,973.5078,0.0,0.0,973.5078,0.3276,-32.7647,true
+mobile_money_users,digital_credit,education,Completed technical training after secondary school,1398,2313405.8912,1005686.0175,0.4347,1307719.8737,0.3276,10.7074,false
+mobile_money_users,digital_credit,education,Don't know (DO NOT READ OUT),2,4146.2879,0.0,0.0,4146.2879,0.3276,-32.7647,true
+mobile_money_users,digital_credit,education,None,2288,2042966.9551,209165.708,0.1024,1833801.247,0.3276,-22.5264,false
+mobile_money_users,digital_credit,education,Other (Specify),2,2656.4397,1561.0399,0.5876,1095.3998,0.3276,25.9996,true
+mobile_money_users,digital_credit,education,Primary completed,3490,4735238.0755,1684870.509,0.3558,3050367.5665,0.3276,2.8168,false
+mobile_money_users,digital_credit,education,Refused to Answer (DO NOT READ OUT),2,863.6901,448.4494,0.5192,415.2407,0.3276,19.1578,true
+mobile_money_users,digital_credit,education,Secondary completed,3837,6243969.8839,2323454.1567,0.3721,3920515.7272,0.3276,4.4464,false
+mobile_money_users,digital_credit,education,Some primary,3019,3882902.0469,957138.8037,0.2465,2925763.2432,0.3276,-8.1146,false
+mobile_money_users,digital_credit,education,Some secondary,1719,2578518.0953,838218.6558,0.3251,1740299.4394,0.3276,-0.257,false
+mobile_money_users,digital_credit,education,Some technical training after secondary school,471,831876.8994,356095.3545,0.4281,475781.5449,0.3276,10.0415,false
+mobile_money_users,digital_credit,education,Some university,339,831764.7379,360915.1263,0.4339,470849.6116,0.3276,10.6268,false
+mobile_money_users,digital_credit,education,University completed,981,1644508.0041,490911.3425,0.2985,1153596.6616,0.3276,-2.9132,false
+mobile_money_users,digital_credit,sex,Female,10385,12867512.7461,3825003.9794,0.2973,9042508.7667,0.3276,-3.0387,false
+mobile_money_users,digital_credit,sex,Male,7164,12246277.7686,4403461.184,0.3596,7842816.5846,0.3276,3.1928,false
 mobile_money_users,formal_access,age_group,18-25,3323,6503476.3942,5352185.0853,0.823,1151291.3089,0.9303,-10.7336,false
 mobile_money_users,formal_access,age_group,26-35,5034,7615915.7101,7372937.927,0.9681,242977.7831,0.9303,3.7787,false
 mobile_money_users,formal_access,age_group,36-45,3681,4935694.7059,4808507.5435,0.9742,127187.1624,0.9303,4.3922,false

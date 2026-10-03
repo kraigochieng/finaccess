@@ -30,8 +30,8 @@ def metrics():
             segment("bank", "Small lag", 0.46, 0.5),
             segment("bank", "Tiny sample", 0.1, 0.5, n=10),
             segment("bank", "Medium lag", 0.4, 0.5),
-            segment("digital_credit", "Relative lag", 0.01, 0.02),
-            segment("digital_credit", "Slight lag", 0.019, 0.02),
+            segment("digital_apps", "Relative lag", 0.01, 0.02),
+            segment("digital_apps", "Slight lag", 0.019, 0.02),
         ]
     )
 
@@ -50,7 +50,7 @@ def test_point_gap_rule_picks_segments_lagging_by_five_points(metrics):
 def test_relative_rule_catches_low_prevalence_products(metrics):
     result = gaps.segment_gaps(metrics)
     # 1pp behind, but half the national share
-    assert names(result, "digital_credit") == ["Relative lag"]
+    assert names(result, "digital_apps") == ["Relative lag"]
 
 
 def test_tiny_samples_and_national_rows_are_never_gaps(metrics):
