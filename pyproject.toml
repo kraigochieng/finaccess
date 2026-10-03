@@ -1,7 +1,7 @@
 [project]
 name = "finaccess"
 version = "0.1.0"
-description = "Add your description here"
+description = "Exploring the FinAccess 2024 Kenya household survey for fintech opportunity analysis"
 readme = "README.md"
 authors = [
     { name = "kraigochieng", email = "kraigochieng@gmail.com" }
