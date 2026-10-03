@@ -8,3 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Raw survey data (downloaded separately, see README)
+src/finaccess/2024_Finaccess_Publicdata.csv
+src/finaccess/2024_Finaccess_Publicdata.xlsx
