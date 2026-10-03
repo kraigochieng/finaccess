@@ -13,7 +13,7 @@ Rules, applied per column:
 import logging
 
 import duckdb
-import pandas as pd
+import polars as pl
 import pyarrow.parquet as pq
 
 from finaccess.logging_config import setup_logging
@@ -45,85 +45,89 @@ def quote(name: str) -> str:
     return '"' + name.replace('"', '""') + '"'
 
 
-def batches(items: list[str]):
+def batches(items: list):
     for i in range(0, len(items), BATCH):
         yield items[i : i + BATCH]
 
 
-def plan_columns(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
-    """Decide the target type of every column and count its NULL markers."""
-    columns = pq.ParquetFile(SOURCE).schema.names
-    variables = pd.read_csv(VARIABLES).set_index("name")
+def classify(var: dict) -> tuple[str, str]:
+    """Initial status and target type of a column from its dictionary entry."""
+    labelled = var["vallab"] is not None
+    if var["isnumeric"] == 1 and not labelled and var["type"] in NUMERIC_TYPES:
+        return "cast_candidate", NUMERIC_TYPES[var["type"]]
+    if labelled:
+        return "kept_string_labelled", "VARCHAR"
+    if var["isnumeric"] == 1:
+        return "kept_string_unsupported_type", "VARCHAR"
+    return "kept_string_text", "VARCHAR"
 
-    missing = set(columns) - set(variables.index)
+
+def resolve(column: dict) -> None:
+    """A candidate only becomes a cast when every non-sentinel value casts."""
+    if column["status"] != "cast_candidate":
+        return
+    if column["cast_failures"] == 0:
+        column["status"] = "cast"
+    else:
+        column["status"] = "kept_string_cast_failed"
+        column["target_type"] = "VARCHAR"
+
+
+def plan_columns(con: duckdb.DuckDBPyConnection) -> pl.DataFrame:
+    """Decide the target type of every column and count its NULL markers."""
+    names = pq.ParquetFile(SOURCE).schema.names
+    variables = {row["name"]: row for row in pl.read_csv(VARIABLES).iter_rows(named=True)}
+
+    missing = set(names) - set(variables)
     if missing:
         raise SystemExit(f"Columns missing from the dictionary: {sorted(missing)[:5]}")
 
-    rows = []
-    for name in columns:
-        var = variables.loc[name]
-        labelled = pd.notna(var["vallab"])
-        if var["isnumeric"] == 1 and not labelled and var["type"] in NUMERIC_TYPES:
-            status, target = "cast_candidate", NUMERIC_TYPES[var["type"]]
-        elif labelled:
-            status, target = "kept_string_labelled", "VARCHAR"
-        elif var["isnumeric"] == 1:
-            status, target = "kept_string_unsupported_type", "VARCHAR"
-        else:
-            status, target = "kept_string_text", "VARCHAR"
-        rows.append(
+    plan = []
+    for name in names:
+        status, target = classify(variables[name])
+        plan.append(
             {
                 "name": name,
-                "dictionary_type": var["type"],
+                "dictionary_type": variables[name]["type"],
                 "status": status,
                 "target_type": target,
+                "not_asked_count": 0,
+                "cast_failures": 0,
             }
         )
-    plan = pd.DataFrame(rows).set_index("name")
-    plan["not_asked_count"] = 0
-    plan["cast_failures"] = 0
 
-    for batch in batches(columns):
+    for batch in batches(plan):
         select = []
-        for name in batch:
-            col = quote(name)
+        for column in batch:
+            col = quote(column["name"])
             select.append(f"COUNT(*) FILTER (WHERE {col} = '{NOT_ASKED}')")
-            if plan.at[name, "status"] == "cast_candidate":
-                target = plan.at[name, "target_type"]
+            if column["status"] == "cast_candidate":
                 select.append(
                     f"COUNT(*) FILTER (WHERE {col} <> '{NOT_ASKED}' "
-                    f"AND TRY_CAST({col} AS {target}) IS NULL)"
+                    f"AND TRY_CAST({col} AS {column['target_type']}) IS NULL)"
                 )
         result = iter(con.execute(f"SELECT {','.join(select)} FROM '{SOURCE}'").fetchone())
-        for name in batch:
-            plan.at[name, "not_asked_count"] = next(result)
-            if plan.at[name, "status"] == "cast_candidate":
-                plan.at[name, "cast_failures"] = next(result)
-        logger.info("Planned %s/%s columns", batch_end(batch, columns), len(columns))
+        for column in batch:
+            column["not_asked_count"] = next(result)
+            if column["status"] == "cast_candidate":
+                column["cast_failures"] = next(result)
+        logger.info("Planned %s/%s columns", plan.index(batch[-1]) + 1, len(plan))
 
-    # A candidate only becomes a cast when every non-sentinel value casts
-    is_candidate = plan["status"] == "cast_candidate"
-    plan.loc[is_candidate & (plan["cast_failures"] == 0), "status"] = "cast"
-    failed = is_candidate & (plan["cast_failures"] > 0)
-    plan.loc[failed, "status"] = "kept_string_cast_failed"
-    plan.loc[failed, "target_type"] = "VARCHAR"
-    return plan
+    for column in plan:
+        resolve(column)
+    return pl.DataFrame(plan)
 
 
-def batch_end(batch: list[str], columns: list[str]) -> int:
-    return columns.index(batch[-1]) + 1
-
-
-def select_expression(name: str, plan: pd.DataFrame) -> str:
-    col = quote(name)
+def select_expression(column: dict) -> str:
+    col = quote(column["name"])
     value = f"NULLIF({col}, '{NOT_ASKED}')"
-    if plan.at[name, "status"] == "cast":
-        value = f"TRY_CAST({value} AS {plan.at[name, 'target_type']})"
+    if column["status"] == "cast":
+        value = f"TRY_CAST({value} AS {column['target_type']})"
     return f"{value} AS {col}"
 
 
-def write_typed(con: duckdb.DuckDBPyConnection, plan: pd.DataFrame) -> None:
-    select = ",\n    ".join(select_expression(name, plan) for name in plan.index)
+def write_typed(con: duckdb.DuckDBPyConnection, plan: pl.DataFrame) -> None:
+    select = ",\n    ".join(select_expression(column) for column in plan.iter_rows(named=True))
     if TARGET.exists():
         TARGET.unlink()
     con.execute(
@@ -132,21 +136,21 @@ def write_typed(con: duckdb.DuckDBPyConnection, plan: pd.DataFrame) -> None:
     )
 
 
-def verify(con: duckdb.DuckDBPyConnection, plan: pd.DataFrame) -> None:
+def verify(con: duckdb.DuckDBPyConnection, plan: pl.DataFrame) -> None:
     """Check every value survived and NULLs match the sentinel exactly."""
     source_rows = con.execute(f"SELECT COUNT(*) FROM '{SOURCE}'").fetchone()[0]
     target_rows = con.execute(f"SELECT COUNT(*) FROM '{TARGET}'").fetchone()[0]
     if source_rows != target_rows:
         raise SystemExit(f"Row count changed: {source_rows} -> {target_rows}")
-    if pq.ParquetFile(TARGET).schema.names != list(plan.index):
+    if pq.ParquetFile(TARGET).schema.names != plan["name"].to_list():
         raise SystemExit("Column names or order changed")
 
     bad = {}
-    for batch in batches(list(plan.index)):
+    for batch in batches(plan.to_dicts()):
         select = []
-        for name in batch:
-            col = quote(name)
-            if plan.at[name, "status"] == "cast":
+        for column in batch:
+            col = quote(column["name"])
+            if column["status"] == "cast":
                 same = f"CAST(t.{col} AS DOUBLE) = TRY_CAST(s.{col} AS DOUBLE)"
             else:
                 same = f"t.{col} = s.{col}"
@@ -158,11 +162,11 @@ def verify(con: duckdb.DuckDBPyConnection, plan: pd.DataFrame) -> None:
             f"SELECT {','.join(select)} FROM '{SOURCE}' s "
             f"JOIN '{TARGET}' t USING ({quote(KEY)})"
         ).fetchone()
-        bad.update({name: n for name, n in zip(batch, result) if n})
+        bad.update({column["name"]: n for column, n in zip(batch, result) if n})
 
     if bad:
         raise SystemExit(f"Verification failed for {len(bad)} columns: {list(bad)[:5]}")
-    logger.info("Verified %s columns across %s rows", len(plan), target_rows)
+    logger.info("Verified %s columns across %s rows", plan.height, target_rows)
 
 
 def main() -> None:
@@ -173,8 +177,8 @@ def main() -> None:
     write_typed(con, plan)
     verify(con, plan)
 
-    plan.reset_index().to_csv(REPORT, index=False)
-    logger.info("Status counts:\n%s", plan["status"].value_counts().to_string())
+    plan.write_csv(REPORT)
+    logger.info("Status counts:\n%s", plan["status"].value_counts(sort=True))
     logger.info("Wrote %s (%.1f MB) and %s", TARGET.name, TARGET.stat().st_size / 1e6, REPORT.name)
 
 
