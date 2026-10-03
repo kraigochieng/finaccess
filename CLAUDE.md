@@ -13,7 +13,8 @@ raw xlsx (Google Drive, git-ignored) → `to_parquet.py` → `src/finaccess/fina
 ## Data gotchas
 
 - Every parquet column is a string. Coded answers are stored as label text (`Male`, `Meru`), not numeric codes, even where the dictionary says the variable is numeric.
-- `#NULL!` and `None` appear as sentinel values in many columns; they are not real NULLs.
+- `#NULL!` (not asked / not applicable) appears in 3,025 columns of the all-strings parquet as a literal string, not a real NULL. `None` is a genuine answer label in labelled columns (e.g. `A22i`), not a sentinel.
+- Empty strings occur only in text columns (never in the same column as `#NULL!`).
 - Cast with `TRY_CAST` before aggregating numeric columns. Do not cast labelled columns to the dictionary types, they would become NULL.
 - The csv export of the survey is truncated at 1,024 of 3,816 columns; always use the xlsx or the parquet.
 - Git history still contains the old LFS-tracked xlsx and csv; it was deliberately not rewritten.
