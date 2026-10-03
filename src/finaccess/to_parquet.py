@@ -46,6 +46,8 @@ def convert_excel_to_parquet_optimized(
         for i, col in enumerate(header)
     ]
 
+    if len(set(header)) != len(header):
+        raise ValueError("Duplicate column names in the header")
     string_schema = {name: pl.String for name in header}
 
     writer = None
