@@ -67,7 +67,7 @@ DIMENSIONS = {
     "county": "county",
     "sex": "Sex",
     "age_group": "Age",
-    "education": "trim(A20)",
+    "education": "trim(replace(A20, '\"', ''))",  # labels carry stray quotes and spaces
 }
 
 # Groups of adults the shares are measured within
