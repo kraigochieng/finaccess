@@ -10,7 +10,7 @@ Answer questions a fintech founder would ask when choosing where to build, using
 
 - Who is underserved, and where? (dimensions: county, sex, age group, education)
 - Which products are used, and how does that vary across those dimensions? (savings, credit, insurance, pensions, mobile money, SACCOs, chamas)
-- Where is the gap between awareness and usage?
+- Why do adults not use a product: is it awareness, cost, trust, documents or distance? (the survey has no direct awareness question, so this is answered through the stated reasons for non-use)
 
 The emphasis is on **gaps**: segments that lag the national picture, and how many adults that represents. A gap is only a niche if it is large enough to build for, so every gap is sized in adults.
 
@@ -21,7 +21,8 @@ The emphasis is on **gaps**: segments that lag the national picture, and how man
 3. `to_typed_parquet.py` builds `finaccess_2024_typed.parquet`: `#NULL!` becomes NULL and unlabelled numeric columns get real types (labelled and text columns stay strings); `finaccess_2024_typed_report.csv` lists every column's final type
 4. Analyse the parquet with DuckDB (see `exp.py`)
 5. `metrics.py` computes the weighted share of adults served by each product, overall and by segment; `gaps.py` ranks the lagging segments and products (results in `src/finaccess/results/`)
-6. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
+6. `barriers.py` groups the reasons adults give for not using six products into the report's barrier categories (`results/barriers.csv`)
+7. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
 
 
 ## Finding the gaps
@@ -67,6 +68,37 @@ Read `segment_gaps.csv` for the full ranking, including the mobile-money-user cu
 - No design-based standard errors: weights are applied but survey strata and clusters are not. County estimates rest on roughly 350-550 interviews each, so treat small differences between counties with caution.
 - No urban/rural variable in the public data.
 - One survey round, so no trends. The "served" definitions are the survey's derived indicators, not ours.
+
+## Why the gaps exist: barriers
+
+```sh
+uv run python -m finaccess.barriers   # results/barriers.csv
+```
+
+The survey asks adults who do not use a product why not (insurance, credit, savings, bank account, mobile money, mobile banking). `barriers.py` groups the individual reasons into the six categories the 2024 report uses in Figure 3.9 (affordability, awareness, relevance, trust, eligibility, physical access) plus "other". **The grouping of individual reasons is my judgement**; the mapping is the `BARRIERS` table in the code.
+
+Each row gives two measures. `share_citing` is the weighted share of the adults who were asked that cite the barrier (people can cite several, so shares do not sum to 100). `share_of_mentions` is the barrier's share of all reasons given, which is how the report draws its figure. The base is adults who were asked the question, not the derived non-usage flag, because the two differ (the bank question was also asked of some mobile-banking users).
+
+**Share of non-users citing each barrier** (adults 18+):
+
+| Product | Affordability | Awareness | Relevance | Trust | Eligibility | Physical access |
+|---|---|---|---|---|---|---|
+| Savings | 87.5% | 19.5% | 5.9% | 1.0% | 12.5% | n/a |
+| Bank account | 82.1% | 6.1% | 10.1% | 1.4% | 8.7% | 6.6% |
+| Insurance | 76.2% | 23.4% | 7.9% | 1.6% | 8.4% | n/a |
+| Credit | 54.7% | 10.4% | 52.3% | 4.9% | 13.7% | n/a |
+| Mobile banking | 47.7% | 21.0% | 23.9% | 1.5% | 10.5% | 16.9% |
+| Mobile money | 32.0% | 7.0% | 5.2% | 0.6% | 46.1% | 51.0% |
+
+How to read it:
+- **Affordability dominates** for savings, banks and insurance, so a product for those has to be cheap or income-linked before anything else matters.
+- **Awareness is real but secondary.** About 4.3M insurance non-users and 3.3M mobile banking non-users cite not knowing or understanding the product. That is a reach and education problem a fintech can address.
+- **Credit is a relevance problem as much as a cost one** (52% do not want or see a use for loans), so more credit supply alone will not close that gap.
+- **Mobile money is blocked by phones, network and ID**, not by cost or awareness.
+
+**Where awareness is the barrier** (largest gaps against the national share; read with the sample size in mind): insurance in Trans Nzoia, Mandera, Turkana and Marsabit; savings in Turkana, Mandera; mobile banking among adults with no formal education (42%) and in Marsabit and Samburu. Several of these counties have only 35-100 respondents asked, so treat them as leads, not findings.
+
+**Check against the report.** Insurance matches Figure 3.9 closely (affordability 63.3% vs 63.2%, awareness 19.5% vs 19.4% as share of reasons), and `barriers.py` fails if it drifts. Bank is within about 4 points but not exact, probably because of a different base or grouping, so it is not asserted. The report's narrative also agrees: affordability leads for savings, banks and insurance, relevance for mobile banking and credit, and phones for mobile money.
 
 ## Getting the data
 
