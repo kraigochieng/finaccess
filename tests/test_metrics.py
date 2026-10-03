@@ -140,17 +140,26 @@ def test_report_check_passes_on_matching_figures():
     metrics.check_against_report(report_frame(formal=0.848, any_access=0.901))
 
 
+def test_report_check_covers_loan_and_savings():
+    with pytest.raises(SystemExit):
+        metrics.check_against_report(report_frame(formal=0.848, any_access=0.901, loan=0.60))
+    with pytest.raises(SystemExit):
+        metrics.check_against_report(report_frame(formal=0.848, any_access=0.901, savings=0.74))
+
+
 def test_report_check_fails_when_figures_drift():
     with pytest.raises(SystemExit):
         metrics.check_against_report(report_frame(formal=0.786, any_access=0.901))
 
 
-def report_frame(formal, any_access, bank_users=14.8e6):
+def report_frame(formal, any_access, bank_users=14.8e6, loan=0.64, savings=0.681):
     national = {"universe": "all_adults", "dimension": "all"}
     return pl.DataFrame(
         [
             {**national, "metric": "formal_access", "share_served": formal, "adults_served": 0.0},
             {**national, "metric": "any_access", "share_served": any_access, "adults_served": 0.0},
             {**national, "metric": "bank", "share_served": 0.5, "adults_served": bank_users},
+            {**national, "metric": "loan", "share_served": loan, "adults_served": 0.0},
+            {**national, "metric": "savings", "share_served": savings, "adults_served": 0.0},
         ]
     )

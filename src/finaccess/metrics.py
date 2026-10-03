@@ -32,6 +32,8 @@ ADULTS = "Age <> '16-17'"
 REPORT_SHARES = {
     "formal_access": (84.8, "Figure 2.1, formal"),
     "any_access": (90.1, "Figure 2.1, 100 - excluded 9.9"),
+    "loan": (64.0, "section 3.4.4, credit usage"),
+    "savings": (68.1, "section 3.4.4, savings"),
 }
 # Bank users in millions of adults (section 3.2)
 REPORT_BANK_USERS_MILLIONS = 14.8
