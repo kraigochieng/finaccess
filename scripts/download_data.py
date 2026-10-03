@@ -1,11 +1,11 @@
-"""Download the raw FinAccess 2024 survey csv from Google Drive."""
+"""Download the raw FinAccess 2024 survey xlsx from Google Drive."""
 
 from pathlib import Path
 
 import gdown
 
-FILE_ID = "1f0lc2OBkJpWX3FUJr21xn6CLbbY7Pk_k"
-OUTPUT_PATH = Path("src/finaccess/2024_Finaccess_Publicdata.csv")
+FILE_ID = "1NGPFK6IGwDpLLQJnrBRyMHiXzUypuZHn"
+OUTPUT_PATH = Path("src/finaccess/2024_Finaccess_Publicdata.xlsx")
 
 
 def main() -> None:
