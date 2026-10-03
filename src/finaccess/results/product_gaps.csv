@@ -1,0 +1,21 @@
+universe,metric,product,adults,adults_served,share_served,unserved_adults
+all_adults,digital_credit,Digital credit usage,28142068.5917,668491.4093,0.0238,27473577.1824
+all_adults,sacco,SACCO usage,28142068.5917,3288192.7273,0.1168,24853875.8644
+all_adults,pension,Pension usage,28142068.5917,3317645.6476,0.1179,24824422.9441
+all_adults,insurance,Insurance usage (incl. NHIF),28142068.5917,6185812.8684,0.2198,21956255.7233
+all_adults,bank,Bank usage,28142068.5917,14772742.7865,0.5249,13369325.8053
+all_adults,loan,Loan usage,28142068.5917,18005607.4006,0.6398,10136461.1911
+all_adults,savings,Savings usage,28142068.5917,19164869.3793,0.681,8977199.2125
+all_adults,formal_access,Formal access,28142068.5917,23873591.5848,0.8483,4268477.0069
+all_adults,mobile_money,Mobile money access,28142068.5917,25113790.5147,0.8924,3028278.077
+all_adults,any_access,Any formal or informal access,28142068.5917,25345698.4629,0.9006,2796370.1288
+mobile_money_users,digital_credit,Digital credit usage,25113790.5147,665616.5795,0.0265,24448173.9352
+mobile_money_users,sacco,SACCO usage,25113790.5147,3227854.7341,0.1285,21885935.7805
+mobile_money_users,pension,Pension usage,25113790.5147,3268711.3734,0.1302,21845079.1413
+mobile_money_users,insurance,Insurance usage (incl. NHIF),25113790.5147,6070610.3135,0.2417,19043180.2011
+mobile_money_users,bank,Bank usage,25113790.5147,14457009.9668,0.5757,10656780.5479
+mobile_money_users,loan,Loan usage,25113790.5147,17100461.383,0.6809,8013329.1317
+mobile_money_users,savings,Savings usage,25113790.5147,18189470.3616,0.7243,6924320.153
+mobile_money_users,formal_access,Formal access,25113790.5147,23363590.8152,0.9303,1750199.6994
+mobile_money_users,any_access,Any formal or informal access,25113790.5147,24081934.7702,0.9589,1031855.7445
+mobile_money_users,mobile_money,Mobile money access,25113790.5147,25113790.5147,1.0,0.0
