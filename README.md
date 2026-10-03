@@ -22,7 +22,8 @@ The emphasis is on **gaps**: segments that lag the national picture, and how man
 4. Analyse the parquet with DuckDB (see `exp.py`)
 5. `metrics.py` computes the weighted share of adults served by each product, overall and by segment; `gaps.py` ranks the lagging segments and products (results in `src/finaccess/results/`)
 6. `barriers.py` groups the reasons adults give for not using six products into the report's barrier categories (`results/barriers.csv`)
-7. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
+7. `niches.py` combines the gaps and the barriers into a rule-based niche shortlist (`results/niches.csv`)
+8. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
 
 
 ## Finding the gaps
@@ -103,6 +104,34 @@ How to read it:
 **Where awareness is the barrier** (largest gaps against the national share; read with the sample size in mind): insurance in Trans Nzoia, Mandera, Turkana and Marsabit; savings in Turkana, Mandera; mobile banking among adults with no formal education (42%) and in Marsabit and Samburu. Several of these counties have only 35-100 respondents asked, so treat them as leads, not findings.
 
 **Check against the report.** Insurance matches Figure 3.9 closely (affordability 63.3% vs 63.2%, awareness 19.5% vs 19.4% as share of reasons), and `barriers.py` fails if it drifts. Bank is within about 4 points but not exact, probably because of a different base or grouping, so it is not asserted. The report's narrative also agrees: affordability leads for savings, banks and insurance, relevance for mobile banking and credit, and phones for mobile money.
+
+## From gaps to niches
+
+```sh
+uv run python -m finaccess.niches   # results/niches.csv
+```
+
+The shortlist is picked by a rule, not by hand. For each product (mobile money, bank, savings, loans, digital credit, insurance, pension, SACCO), take the segment with the largest `gap_adults` among segments that already pass the gap rules, then attach the two barriers non-users in that segment cite most, and what a product would have to do about them.
+
+| # | Product | Segment | Served (national) | Adults short | Main barrier, then second | Awareness |
+|---|---|---|---|---|---|---|
+| 1 | Loans | Ages 18-25 | 50.3% (64.0%) | 1.07M | Affordability 56%, relevance 48% | 10% |
+| 2 | Bank account | No formal education | 18.5% (52.5%) | 0.93M | Affordability 80%, awareness 19% | 19% |
+| 3 | Insurance | Ages 18-25 | 10.6% (22.0%) | 0.89M | Affordability 74%, awareness 21% | 21% |
+| 4 | Savings | No formal education | 38.3% (68.1%) | 0.82M | Affordability 85%, awareness 34% | 34% |
+| 5 | Digital credit | Over 55 | 11.6% (29.6%) | 0.72M | not measured | |
+| 6 | SACCO | Ages 18-25 | 3.4% (11.7%) | 0.65M | not measured | |
+| 7 | Pension | Women | 7.7% (11.8%) | 0.59M | not measured | |
+| 8 | Mobile money | Ages 18-25 | 82.6% (89.2%) | 0.52M | Eligibility (ID) 65%, physical access 42% | 4% |
+
+What it says:
+- **Young adults (18-25) and adults with no formal education recur** across products, so these are the two groups to design for.
+- **For savings, the barrier is price first and awareness second:** one in three non-saving adults with no education cites not knowing how or where to save.
+- **Loans for young adults are as much a relevance problem as a price one** (48% do not see a use for a loan as offered).
+- **Mobile money for young adults is held back by ID and phone access**, not cost.
+- Digital credit, SACCO and pension have no reasons-for-non-use questions in the survey, so the "why" is not measured for them.
+
+**Limits.** Segments overlap: the same 18-25 year olds appear in four of the eight niches, so the "adults short" figures describe each niche on its own and must not be added up. Gap size is measured against the national share, not against a target. A barrier is what non-users in the segment say, and a segment with few respondents falls back to the national barrier for that product (flagged in `barrier_basis`). Everything is descriptive, one survey round, and a hypothetical case study.
 
 ## Getting the data
 
