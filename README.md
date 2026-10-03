@@ -18,8 +18,9 @@ Key metrics and dimensions are still to be chosen; the FinAccess dashboard is th
 
 1. Download the raw xlsx (see below), which holds all 3,816 survey variables
 2. `to_parquet.py` converts it to `finaccess_2024_optimized.parquet` (all columns stored as strings, label text for coded values)
-3. Analyse the parquet with DuckDB (see `exp.py`)
-4. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
+3. `to_typed_parquet.py` builds `finaccess_2024_typed.parquet`: `#NULL!` becomes NULL and unlabelled numeric columns get real types (labelled and text columns stay strings); `finaccess_2024_typed_report.csv` lists every column's final type
+4. Analyse the parquet with DuckDB (see `exp.py`)
+5. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
 
 
 ## Getting the data
