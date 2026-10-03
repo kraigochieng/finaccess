@@ -1,0 +1,9 @@
+rank,product_metric,dimension,segment,n,share_served,national_share,gap_pp,gap_adults,barrier_basis,dominant_barrier,dominant_share,second_barrier,second_share,awareness_share,implication
+1,loan,age_group,18-25,3997,0.5033,0.6398,-13.6506,1074222.8713,segment,affordability,0.5637,relevance,0.4837,0.0966,"Price it low: no minimum balance, pay-as-you-go or income-linked pricing"
+2,bank,education,None,3021,0.1846,0.5249,-34.0289,934443.8378,segment,affordability,0.8045,awareness,0.1949,0.1949,"Price it low: no minimum balance, pay-as-you-go or income-linked pricing"
+3,insurance,age_group,18-25,3997,0.1064,0.2198,-11.3427,892431.3085,segment,affordability,0.7406,awareness,0.2105,0.2105,"Price it low: no minimum balance, pay-as-you-go or income-linked pricing"
+4,savings,education,None,3021,0.3833,0.681,-29.7744,817466.7367,segment,affordability,0.8523,awareness,0.3361,0.3361,"Price it low: no minimum balance, pay-as-you-go or income-linked pricing"
+5,digital_credit,age_group,Above 55,3905,0.1158,0.2959,-18.0154,723380.3784,not measured,,,,,,The survey does not ask why people do not use this product
+6,sacco,age_group,18-25,3997,0.0342,0.1168,-8.2624,650042.558,not measured,,,,,,The survey does not ask why people do not use this product
+7,pension,sex,Female,11739,0.077,0.1179,-4.0919,592788.5982,not measured,,,,,,The survey does not ask why people do not use this product
+8,mobile_money,age_group,18-25,3997,0.8264,0.8924,-6.6006,519404.4652,segment,eligibility,0.6513,physical_access,0.419,0.0374,Lower the onboarding hurdle: ID-light checks and alternatives to collateral
