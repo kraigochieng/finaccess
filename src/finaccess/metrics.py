@@ -56,7 +56,10 @@ METRICS = [
     Metric("bank", "Bank usage", "bank_usage_overall = 'Usage'", "bank_usage_overall"),
     Metric("savings", "Savings usage", "Savings_usage = 'Usage'", "Savings_usage"),
     Metric("loan", "Loan usage", "Loan_usage = 'Usage'", "Loan_usage"),
-    Metric("digital_credit", "Digital credit usage", "Digital_credit_usage = 'Usage'", "Digital_credit_usage"),
+    # Broad: Hustler Fund, mobile money and mobile banking loans (about 30% of adults)
+    Metric("digital_credit", "Digital credit (incl. Hustler Fund, mobile money and mobile banking loans)", "Digital_credit_2 = 'Usage'", "Digital_credit_2"),
+    # Narrow: app-based digital lenders only (about 2% of adults, as in Figure 3.7 of the report)
+    Metric("digital_apps", "App-based digital loans", "Digital_credit_usage = 'Usage'", "Digital_credit_usage"),
     Metric("insurance", "Insurance usage (incl. NHIF)", "All_Insurance_including_NHIF = 'Usage'", "All_Insurance_including_NHIF"),
     Metric("pension", "Pension usage", "Pension_usage = 'Usage'", "Pension_usage"),
     Metric("sacco", "SACCO usage", "Sacco_usage = 'Usage'", "Sacco_usage"),
