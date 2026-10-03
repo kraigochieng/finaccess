@@ -9,6 +9,9 @@ raw xlsx (Google Drive, git-ignored) → `to_parquet.py` → `src/finaccess/fina
 `to_typed_parquet.py` then builds `finaccess_2024_typed.parquet` (real NULLs, numeric columns cast) and `finaccess_2024_typed_report.csv` (per-column type and status). Prefer the typed file for analysis; the all-strings file is the reference copy.
 
 - Download the xlsx with `uv run python scripts/download_data.py`.
+- `metrics.py` and `gaps.py` produce weighted shares and ranked gaps in `src/finaccess/results/`. Adults are 18+ (the survey also interviewed 16-17 year olds) and weights are `indWeight`; `metrics.py` fails if national figures drift from the 2024 report. Without the 18+ filter figures are about 6 points off.
+- Use polars for new code, not pandas. Run tests with `uv run pytest`.
+- When reading csvs with pandas, `None` (an education segment) is parsed as NaN; polars does not do this.
 - Data file paths come from `finaccess.paths.DATA_DIR`; run modules from the repo root, e.g. `uv run python -m finaccess.exp`.
 - `*_variables.csv` is the data dictionary (3,816 variables); `*_values.txt` holds value labels.
 
