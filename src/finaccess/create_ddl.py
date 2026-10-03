@@ -1,4 +1,4 @@
-import pandas as pd
+import polars as pl
 
 from finaccess.csv_to_postgres_types import STATA_TO_POSTGRESQL
 from finaccess.paths import DATA_DIR
@@ -9,16 +9,14 @@ output_sql = DATA_DIR / "create_finaccess_2024_postgresql.sql"
 
 
 # Read only header (fast)
-variables_df = pd.read_csv(variables_csv_file)
+variables_df = pl.read_csv(variables_csv_file)
 
 
 
 
 column_name_and_types = []
-for index, row in variables_df.iterrows():
-    column_name_and_types.append(
-        f"{row['name']} {STATA_TO_POSTGRESQL.get(row['type'])}"
-    )
+for name, stata_type in variables_df.select("name", "type").iter_rows():
+    column_name_and_types.append(f"{name} {STATA_TO_POSTGRESQL.get(stata_type)}")
 
 
 sql = f"CREATE TABLE IF NOT EXISTS finaccess_2024 ({','.join(column_name_and_types)});"
