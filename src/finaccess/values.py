@@ -1,7 +1,7 @@
 import logging
 import re
 
-import pandas as pd
+import polars as pl
 
 from finaccess.logging_config import setup_logging
 from finaccess.paths import DATA_DIR
@@ -36,7 +36,7 @@ for line in text.splitlines():
         rows.append({"vallab": current_vallab, "code": code, "value": value})
 
 
-df = pd.DataFrame(rows)
+df = pl.DataFrame(rows)
 
 # Export to CSV
-df.to_csv(DATA_DIR / "2024_Finaccess_Publicdata_values_processed.csv", index=False)
+df.write_csv(DATA_DIR / "2024_Finaccess_Publicdata_values_processed.csv")

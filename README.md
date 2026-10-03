@@ -113,9 +113,7 @@ This saves `src/finaccess/2024_Finaccess_Publicdata.xlsx`. Manual link: https://
 
 ## Notes
 
-pandas was used to create the since llm cannot handle the large csv file
-
-new code uses polars rather than pandas
+The project uses polars (and DuckDB) rather than pandas; pandas is not a dependency.
 
 1. preprocess values
 2. use variables and preprocessed values to create sql

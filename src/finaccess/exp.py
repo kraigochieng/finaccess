@@ -41,6 +41,6 @@ result_df = con.execute(
     FROM '{parquet_file_path}'
     GROUP BY saving_for_education
     """
-).fetch_df()
+).pl()
 
 print(result_df.head())

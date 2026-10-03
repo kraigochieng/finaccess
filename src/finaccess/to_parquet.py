@@ -1,6 +1,6 @@
 # optimized_excel_to_parquet.py
 
-import pandas as pd
+import polars as pl
 from openpyxl import load_workbook
 import os
 import sys
@@ -8,6 +8,12 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from finaccess.paths import DATA_DIR
+
+
+def to_arrow_table(df: pl.DataFrame) -> pa.Table:
+    # polars yields large_string; keep plain string so the file matches earlier output
+    table = df.to_arrow()
+    return table.cast(pa.schema([(name, pa.string()) for name in table.column_names]))
 
 
 def convert_excel_to_parquet_optimized(
@@ -40,6 +46,10 @@ def convert_excel_to_parquet_optimized(
         for i, col in enumerate(header)
     ]
 
+    if len(set(header)) != len(header):
+        raise ValueError("Duplicate column names in the header")
+    string_schema = {name: pl.String for name in header}
+
     writer = None
     total_rows = 0
     chunk_count = 0
@@ -52,17 +62,8 @@ def convert_excel_to_parquet_optimized(
             chunk_data.append(cleaned_row)
 
             if len(chunk_data) >= chunk_size:
-                # Build DataFrame and infer dtypes (better than all-str)
-                df_chunk = pd.DataFrame(chunk_data, columns=header)
-                # Optional: smarter dtypes (uncomment if you want numeric detection; costs a bit more RAM)
-                # for col in df_chunk.select_dtypes(include='object').columns:
-                #     df_chunk[col] = pd.to_numeric(df_chunk[col], errors='coerce').fillna(df_chunk[col])
-
-                # Fill NaNs (from dtype inference if used)
-                df_chunk = df_chunk.fillna("")
-
-                # To PyArrow Table
-                table = pa.Table.from_pandas(df_chunk, preserve_index=False)
+                df_chunk = pl.DataFrame(chunk_data, schema=string_schema, orient="row")
+                table = to_arrow_table(df_chunk)
 
                 if writer is None:
                     # First chunk: init writer with schema
@@ -86,9 +87,8 @@ def convert_excel_to_parquet_optimized(
 
         # Final chunk
         if chunk_data:
-            df_chunk = pd.DataFrame(chunk_data, columns=header)
-            df_chunk = df_chunk.fillna("")
-            table = pa.Table.from_pandas(df_chunk, preserve_index=False)
+            df_chunk = pl.DataFrame(chunk_data, schema=string_schema, orient="row")
+            table = to_arrow_table(df_chunk)
             if writer is None:
                 writer = pq.ParquetWriter(
                     parquet_file_path, table.schema, compression=compression
