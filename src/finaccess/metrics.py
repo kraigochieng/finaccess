@@ -127,7 +127,7 @@ def compute() -> pl.DataFrame:
     return result.join(national, on=["universe", "metric"], how="left").with_columns(
         ((pl.col("share_served") - pl.col("national_share")) * 100).alias("gap_pp"),
         (pl.col("n") < MIN_SEGMENT_N).alias("low_confidence"),
-    )
+    ).sort("universe", "metric", "dimension", "segment")  # stable output for clean diffs
 
 
 def national_row(result: pl.DataFrame, metric: str) -> dict:

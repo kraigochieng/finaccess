@@ -69,6 +69,11 @@ def row(result, universe, metric, dimension, segment):
     ).row(0, named=True)
 
 
+def test_output_order_is_stable(synthetic):
+    keys = ["universe", "metric", "dimension", "segment"]
+    assert synthetic.equals(synthetic.sort(keys))
+
+
 def test_children_are_excluded_from_adults(synthetic):
     national = row(synthetic, "all_adults", "any_access", "all", "All")
     assert national["n"] == 3
