@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kenya's Financial Gaps</title>
+<meta name="description" content="A hypothetical case study of the FinAccess 2024 household survey: where Kenya's financial access and usage gaps are, who is left out, and why.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-other: #b9b8b0;
+  --ramp-fill: #2a78d6;
+  --ramp-track: #cde2fb;
+  --good: #006300;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-other: #5d5c57;
+    --ramp-fill: #3987e5;
+    --ramp-track: #0d366b;
+    --good: #0ca30c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-other: #5d5c57;
+  --ramp-fill: #3987e5;
+  --ramp-track: #0d366b;
+  --good: #0ca30c;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px 64px; }
+h1, h2, h3 { line-height: 1.2; margin: 0; font-weight: 650; }
+h1 { font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; max-width: 26ch; }
+h2 { font-size: 24px; letter-spacing: -0.01em; margin-bottom: 8px; }
+h3 { font-size: 16px; }
+p { margin: 0 0 12px; max-width: 68ch; }
+.lede { color: var(--ink-2); font-size: 18px; max-width: 60ch; }
+.small { font-size: 13px; color: var(--ink-2); }
+a { color: var(--series-1); }
+
+header { padding: 40px 0 8px; }
+.badge {
+  display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--ink-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; margin-bottom: 16px;
+}
+.hero { display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: flex-end; margin: 28px 0 8px; }
+.hero-figure { font-size: clamp(56px, 12vw, 88px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.hero-label { max-width: 22ch; color: var(--ink-2); font-size: 15px; margin-top: 6px; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 20px 0 0; }
+.tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.tile .v { font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+.tile .l { font-size: 13px; color: var(--ink-2); }
+
+section { margin-top: 64px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 16px 0 12px; }
+.controls label { font-size: 13px; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: center; }
+select, .seg button {
+  font: inherit; font-size: 14px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--axis); border-radius: 8px; padding: 6px 10px; cursor: pointer;
+}
+.seg { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.seg button[aria-pressed="true"] { border-color: var(--series-1); box-shadow: inset 0 0 0 1px var(--series-1); font-weight: 600; }
+select:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+figure.card { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px 14px; }
+figure.card h3 { margin-bottom: 2px; }
+figure.card .sub { font-size: 13px; color: var(--ink-2); margin: 0 0 14px; }
+.toggle { font: inherit; font-size: 13px; color: var(--ink-2); background: none; border: 0; padding: 8px 0 0; cursor: pointer; text-decoration: underline; }
+.empty { color: var(--ink-2); padding: 24px 0; font-size: 14px; }
+
+/* horizontal bars: thin, 4px round data end, square at the baseline */
+.rows { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: minmax(110px, 190px) 1fr auto; align-items: center; gap: 12px; border-radius: 6px; padding: 2px 0; }
+.row:hover, .row:focus-visible { background: color-mix(in srgb, var(--series-1) 7%, transparent); }
+.row .name { font-size: 14px; }
+.row .bar { height: 16px; display: flex; border-left: 1px solid var(--axis); }
+.row .fill { height: 100%; background: var(--series-1); border-radius: 0 4px 4px 0; min-width: 2px; }
+.row .val { font-size: 14px; font-weight: 600; min-width: 5.5ch; text-align: right; }
+.row .val small { font-weight: 400; color: var(--ink-2); }
+
+/* stacked bars with a 2px surface gap */
+.stack { display: grid; grid-template-columns: minmax(110px, 150px) 1fr; align-items: center; gap: 12px; margin: 0 0 10px; }
+.stack .bars { display: flex; gap: 2px; height: 24px; background: var(--surface); }
+.stack .seg-part { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; min-width: 2px; border-radius: 0; }
+.stack .seg-part:last-child { border-radius: 0 4px 4px 0; }
+.stack .seg-part:hover, .stack .seg-part:focus-visible { filter: brightness(1.12); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-2); margin: 0 0 14px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* niche cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.niche { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.niche .rank { font-size: 12px; font-weight: 700; color: var(--ink-2); letter-spacing: .04em; }
+.niche h3 { font-size: 18px; }
+.meter { position: relative; height: 10px; border-radius: 5px; background: var(--ramp-track); margin: 4px 0 2px; }
+.meter .fill { position: absolute; inset: 0 auto 0 0; background: var(--ramp-fill); border-radius: 5px; }
+.meter .mark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); border-radius: 1px; }
+.niche .why { font-size: 14px; color: var(--ink-2); }
+.niche .do { font-size: 14px; border-top: 1px solid var(--grid); padding-top: 8px; margin-top: auto; }
+.niche .big { font-size: 26px; font-weight: 650; letter-spacing: -0.02em; }
+
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-2); font-size: 13px; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; max-height: 420px; overflow-y: auto; }
+
+#tip {
+  position: fixed; z-index: 10; pointer-events: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--axis); border-radius: 8px; padding: 8px 10px; font-size: 13px; max-width: 280px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.14);
+}
+#tip .t { font-weight: 600; margin-bottom: 4px; }
+#tip .r { display: flex; gap: 8px; align-items: baseline; }
+#tip .r b { font-weight: 650; min-width: 4.5ch; }
+#tip .r span { color: var(--ink-2); }
+#tip .k { display: inline-block; width: 12px; height: 3px; border-radius: 2px; margin-right: 2px; transform: translateY(-3px); }
+
+.checks td:nth-child(2), .checks td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; }
+ul.limits { padding-left: 18px; max-width: 68ch; }
+ul.limits li { margin-bottom: 6px; }
+footer { margin-top: 64px; color: var(--ink-2); font-size: 13px; border-top: 1px solid var(--grid); padding-top: 16px; }
+
+@media (max-width: 560px) {
+  .row { grid-template-columns: 1fr auto; row-gap: 4px; }
+  .row .name { grid-column: 1 / -1; }
+  .stack { grid-template-columns: 1fr; gap: 4px; }
+  .kpis { grid-template-columns: 1fr; }
+  .hero { align-items: flex-start; }
+}
+@media print { .controls, .toggle { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">Hypothetical case study · FinAccess 2024 · adults 18+</span>
+  <h1>Most Kenyan adults have financial access. Far fewer have the products that matter.</h1>
+  <p class="lede">A look at where the gaps are, who is left out, and why, using the 2024 FinAccess household survey. Written for fintech founders choosing where to build.</p>
+  <div class="hero">
+    <div>
+      <div class="hero-figure" id="hero-value"></div>
+      <div class="hero-label">of adults have some formal or informal financial access</div>
+    </div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+</header>
+
+<section id="gap">
+  <h2>Where the gap is</h2>
+  <p id="gap-text"></p>
+  <div class="controls" role="group" aria-label="Who to count"><span class="small">Count</span><div class="seg" id="gap-universe"></div></div>
+  <figure class="card" id="fig-gap"></figure>
+</section>
+
+<section id="who">
+  <h2>Who is left out</h2>
+  <p>Pick a product and a cut. Segments are ranked by <strong>adults short</strong>: how many more adults would be served if the segment matched the national share. A segment only appears if it lags by 5 points or more, or sits 25% or more below the national share, and has at least <span id="minn"></span> respondents.</p>
+  <div class="controls">
+    <label>Product <select id="who-product"></select></label>
+    <label>Cut <select id="who-dimension"></select></label>
+    <label>Count <select id="who-universe"></select></label>
+  </div>
+  <figure class="card" id="fig-who"></figure>
+</section>
+
+<section id="why">
+  <h2>Why people do not use a product</h2>
+  <p id="why-text"></p>
+  <figure class="card" id="fig-why"></figure>
+</section>
+
+<section id="niches">
+  <h2>Where the niches are</h2>
+  <p>One niche per product, chosen by a fixed rule: the segment with the most adults short of the national share, with the reasons non-users in that segment give for staying out. The survey does not ask why for digital credit, SACCOs or pensions.</p>
+  <div class="cards" id="cards"></div>
+  <p class="small" style="margin-top:12px">Segments overlap (the same 18-25 year olds appear in several niches), so the sizes describe each niche on its own and should not be added together.</p>
+</section>
+
+<section id="trust">
+  <h2>How far to trust it</h2>
+  <p>Every national figure is checked against the 2024 report when the analysis runs, and the build fails if one drifts. These are the figures compared.</p>
+  <figure class="card"><div class="tablewrap"><table class="checks" id="checks"></table></div></figure>
+  <h3 style="margin-top:24px">Limits</h3>
+  <ul class="limits">
+    <li>Descriptive, not causal. Young adults lag on loans and insurance partly because of life stage, so a gap is not automatically an opportunity.</li>
+    <li>Weights are applied, but survey strata and clusters are not, so there are no design-based standard errors. County estimates rest on roughly 350-550 interviews each.</li>
+    <li>The public data has no urban/rural variable, and this is one survey round, so no trends.</li>
+    <li>"Served" uses the survey's own derived indicators. Digital credit is shown two ways: broad (Hustler Fund, mobile money and mobile banking loans) and app-based lenders only, which the report also puts near 2%.</li>
+    <li>The survey measures usage, not willingness to pay. Market size is not revenue.</li>
+  </ul>
+</section>
+
+<footer>
+  Data: 2024 FinAccess Household Survey (Kenya). Adults are 18 and over, weighted with the individual weight. This page is generated from the analysis results; the code, tests and method are in the repository.
+</footer>
+</div>
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+</script>
+<script>
+(() => {
+const D = DATA;
+const L = D.labels;
+const $ = (s, r = document) => r.querySelector(s);
+const el = (tag, cls, text) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
+  return e;
+};
+const pct = (x, d = 1) => (x * 100).toFixed(d) + '%';
+const adults = (x) => (x >= 1e6 ? (x / 1e6).toFixed(1) : (x / 1e6).toFixed(2)) + 'M';
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+/* ---------- lookups ---------- */
+const prod = (universe, metric) => D.products.find((r) => r.universe === universe && r.metric === metric);
+const national = (metric) => prod('all_adults', metric);
+const barrier = (product, cat) => D.barriers.find((r) => r.product === product && r.barrier === cat);
+
+/* ---------- tooltip (labels are data: textContent only) ---------- */
+const tip = $('#tip');
+function showTip(x, y, title, rows) {
+  tip.replaceChildren();
+  if (title) tip.append(el('div', 't', title));
+  for (const r of rows) {
+    const row = el('div', 'r');
+    if (r.color) {
+      const k = el('i', 'k');
+      k.style.background = r.color;
+      row.append(k);
+    }
+    row.append(el('b', null, r.value), el('span', null, r.label));
+    tip.append(row);
+  }
+  tip.hidden = false;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.max(8, Math.min(x + 14, window.innerWidth - w - 8)) + 'px';
+  tip.style.top = Math.max(8, Math.min(y + 14, window.innerHeight - h - 8)) + 'px';
+}
+const hideTip = () => { tip.hidden = true; };
+function bindTip(node, title, rows) {
+  node.addEventListener('pointermove', (e) => showTip(e.clientX, e.clientY, title, rows));
+  node.addEventListener('pointerleave', hideTip);
+  node.addEventListener('focus', () => {
+    const b = node.getBoundingClientRect();
+    showTip(b.left + b.width / 2, b.top, title, rows);
+  });
+  node.addEventListener('blur', hideTip);
+}
+
+/* ---------- figure shell with a table-view twin ---------- */
+function makeFigure(root, title, sub) {
+  root.replaceChildren();
+  root.append(el('h3', null, title), el('p', 'sub', sub));
+  const plot = el('div', 'plot');
+  const table = el('div', 'tablewrap');
+  table.hidden = true;
+  const toggle = el('button', 'toggle', 'Table view');
+  toggle.type = 'button';
+  toggle.setAttribute('aria-pressed', 'false');
+  toggle.addEventListener('click', () => {
+    const on = table.hidden;
+    table.hidden = !on;
+    plot.hidden = on;
+    toggle.textContent = on ? 'Chart view' : 'Table view';
+    toggle.setAttribute('aria-pressed', String(on));
+  });
+  root.append(plot, table, toggle);
+  return {
+    set(plotNode, headers, rows) {
+      plot.replaceChildren(plotNode);
+      const t = el('table');
+      const head = el('tr');
+      headers.forEach((h, i) => { const th = el('th', i ? 'num' : null, h); head.append(th); });
+      t.append(head);
+      for (const r of rows) {
+        const tr = el('tr');
+        r.forEach((c, i) => tr.append(el('td', i ? 'num' : null, c)));
+        t.append(tr);
+      }
+      table.replaceChildren(t);
+    },
+  };
+}
+
+/* ---------- header ---------- */
+function header() {
+  $('#hero-value').textContent = pct(national('any_access').share_served);
+  const tiles = [['insurance', 'use insurance (incl. NHIF)'], ['pension', 'have a pension'], ['sacco', 'use a SACCO']];
+  const k = $('#kpis');
+  for (const [m, label] of tiles) {
+    const t = el('div', 'tile');
+    t.append(el('div', 'v', pct(national(m).share_served)), el('div', 'l', 'of adults ' + label));
+    k.append(t);
+  }
+}
+
+/* ---------- 1. product gaps ---------- */
+const gapProducts = ['digital_apps', 'sacco', 'pension', 'insurance', 'digital_credit', 'bank', 'loan', 'savings', 'mobile_money'];
+const gapState = { universe: 'all_adults' };
+const gapFig = makeFigure($('#fig-gap'), 'Adults not served, by product', 'Millions of adults 18+ who do not use the product. Longer bar, bigger gap.');
+function renderGap() {
+  const rows = gapProducts
+    .map((m) => ({ m, ...prod(gapState.universe, m) }))
+    .sort((a, b) => b.unserved_adults - a.unserved_adults);
+  const max = Math.max(...rows.map((r) => r.unserved_adults));
+  const wrap = el('div', 'rows');
+  for (const r of rows) {
+    const row = el('div', 'row');
+    row.tabIndex = 0;
+    row.setAttribute('aria-label', `${L.products[r.m]}: ${adults(r.unserved_adults)} adults not served, ${pct(r.share_served)} served`);
+    const bar = el('div', 'bar');
+    const fill = el('div', 'fill');
+    fill.style.width = (r.unserved_adults / max * 100) + '%';
+    bar.append(fill);
+    const val = el('div', 'val', adults(r.unserved_adults));
+    row.append(el('div', 'name', L.products[r.m]), bar, val);
+    bindTip(row, L.products[r.m], [
+      { value: adults(r.unserved_adults), label: 'adults not served' },
+      { value: pct(r.share_served), label: 'of ' + L.universes[gapState.universe].toLowerCase() + ' served' },
+      { value: adults(r.adults), label: 'adults counted' },
+    ]);
+    wrap.append(row);
+  }
+  gapFig.set(
+    wrap,
+    ['Product', 'Not served', 'Served', 'Adults counted'],
+    rows.map((r) => [L.products[r.m], adults(r.unserved_adults), pct(r.share_served), adults(r.adults)]),
+  );
+}
+function gapText() {
+  const a = (m) => prod('all_adults', m);
+  $('#gap-text').textContent =
+    `Mobile money reaches ${pct(a('mobile_money').share_served)} of adults, so the rail is already there. The gaps are in what runs on top of it: ` +
+    `${adults(a('insurance').unserved_adults)} adults have no insurance, ${adults(a('pension').unserved_adults)} no pension and ` +
+    `${adults(a('sacco').unserved_adults)} no SACCO account. Switch to mobile money users to see the same gaps among people who are already digital. ` +
+    `App-based lenders reach only ${pct(a('digital_apps').share_served)} of adults, which the report also shows, while broad digital credit reaches ${pct(a('digital_credit').share_served)}.`;
+}
+function gapControls() {
+  const box = $('#gap-universe');
+  for (const u of Object.keys(L.universes)) {
+    const b = el('button', null, L.universes[u]);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(u === gapState.universe));
+    b.addEventListener('click', () => {
+      gapState.universe = u;
+      box.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      renderGap();
+    });
+    box.append(b);
+  }
+}
+
+/* ---------- 2. segment explorer ---------- */
+const whoFig = makeFigure($('#fig-who'), 'Segments with the biggest shortfall', '');
+const whoProducts = ['loan', 'bank', 'savings', 'insurance', 'digital_credit', 'sacco', 'pension', 'mobile_money', 'formal_access', 'any_access'];
+function renderWho() {
+  const metric = $('#who-product').value, dim = $('#who-dimension').value, uni = $('#who-universe').value;
+  const rows = D.segments
+    .filter((r) => r.universe === uni && r.metric === metric && r.dimension === dim)
+    .sort((a, b) => b.gap_adults - a.gap_adults)
+    .slice(0, 10);
+  const nat = prod(uni, metric);
+  $('#fig-who .sub').textContent =
+    `${L.products[metric]} among ${L.universes[uni].toLowerCase()}, by ${L.dimensions[dim].toLowerCase()}. National: ${pct(nat.share_served)} served. Bar = adults short of the national share.`;
+  const wrap = el('div', 'rows');
+  if (!rows.length) {
+    wrap.append(el('div', 'empty', 'No segment in this cut lags the national share by enough (5+ points, or 25% below), with enough respondents.'));
+  }
+  const max = rows.length ? Math.max(...rows.map((r) => r.gap_adults)) : 1;
+  for (const r of rows) {
+    const row = el('div', 'row');
+    row.tabIndex = 0;
+    row.setAttribute('aria-label', `${r.segment_label}: ${adults(r.gap_adults)} adults short, ${pct(r.share_served)} served against ${pct(r.national_share)} nationally`);
+    const bar = el('div', 'bar');
+    const fill = el('div', 'fill');
+    fill.style.width = (r.gap_adults / max * 100) + '%';
+    bar.append(fill);
+    const val = el('div', 'val');
+    val.append(adults(r.gap_adults));
+    row.append(el('div', 'name', r.segment_label), bar, val);
+    bindTip(row, r.segment_label, [
+      { value: adults(r.gap_adults), label: 'adults short of the national share' },
+      { value: pct(r.share_served), label: `served (national ${pct(r.national_share)})` },
+      { value: (r.gap_pp).toFixed(1) + ' pts', label: 'gap to national' },
+      { value: String(r.n), label: 'respondents' },
+    ]);
+    wrap.append(row);
+  }
+  whoFig.set(
+    wrap,
+    ['Segment', 'Adults short', 'Served', 'National', 'Respondents'],
+    rows.map((r) => [r.segment_label, adults(r.gap_adults), pct(r.share_served), pct(r.national_share), String(r.n)]),
+  );
+}
+function whoControls() {
+  $('#minn').textContent = D.minSegmentN;
+  const fill = (sel, items) => items.forEach(([v, t]) => { const o = el('option', null, t); o.value = v; sel.append(o); });
+  fill($('#who-product'), whoProducts.map((m) => [m, L.products[m]]));
+  fill($('#who-dimension'), Object.entries(L.dimensions));
+  fill($('#who-universe'), Object.entries(L.universes));
+  $('#who-dimension').value = 'age_group';
+  ['#who-product', '#who-dimension', '#who-universe'].forEach((s) => $(s).addEventListener('change', renderWho));
+}
+
+/* ---------- 3. barriers ---------- */
+const whyFig = makeFigure($('#fig-why'), 'Reasons non-users give, by product', 'Each bar is 100% of the reasons given by adults who do not use the product (they can give several).');
+const catColor = { affordability: '--series-1', awareness: '--series-2', relevance: '--series-3', trust: '--series-4', eligibility: '--series-5', physical_access: '--series-6', other: '--series-other' };
+const canvas = document.createElement('canvas').getContext('2d');
+function inkOn(hex) {
+  const c = hex.replace('#', '');
+  const f = (i) => { const v = parseInt(c.slice(i, i + 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+  const lum = 0.2126 * f(0) + 0.7152 * f(2) + 0.0722 * f(4);
+  const contrast = (l2) => (Math.max(lum, l2) + 0.05) / (Math.min(lum, l2) + 0.05);
+  return contrast(1) >= contrast(0.0035) ? '#ffffff' : '#0b0b0b';
+}
+function renderWhy() {
+  const wrap = el('div');
+  const legend = el('div', 'legend');
+  for (const c of D.barrierOrder) {
+    const s = el('span');
+    const sw = el('i');
+    sw.style.background = css(catColor[c]);
+    s.append(sw, L.barriers[c].replace(/ \(.*\)/, ''));
+    legend.append(s);
+  }
+  wrap.append(legend);
+  canvas.font = '600 12px system-ui, sans-serif';
+  const tableRows = [];
+  for (const p of D.barrierProductOrder) {
+    const parts = D.barrierOrder.map((c) => barrier(p, c)).filter(Boolean);
+    const row = el('div', 'stack');
+    row.append(el('div', 'name', L.barrierProducts[p]));
+    const bars = el('div', 'bars');
+    row.append(bars);
+    const total = parts.reduce((a, r) => a + r.share_of_mentions, 0);
+    const tipRows = parts.map((r) => ({ value: pct(r.share_of_mentions, 1), label: L.barriers[r.barrier], color: css(catColor[r.barrier]) }));
+    for (const r of parts) {
+      const part = el('div', 'seg-part');
+      part.style.flex = `${r.share_of_mentions / total} 1 0`;
+      const color = css(catColor[r.barrier]);
+      part.style.background = color;
+      part.tabIndex = 0;
+      part.setAttribute('aria-label', `${L.barrierProducts[p]}, ${L.barriers[r.barrier]}: ${pct(r.share_of_mentions)} of reasons`);
+      bindTip(part, L.barrierProducts[p], tipRows);
+      bars.append(part);
+      part.dataset.share = String(r.share_of_mentions);
+      part.dataset.ink = inkOn(color);
+    }
+    wrap.append(row);
+    tableRows.push([L.barrierProducts[p], ...D.barrierOrder.map((c) => { const r = barrier(p, c); return r ? pct(r.share_of_mentions) : '-'; })]);
+  }
+  whyFig.set(wrap, ['Product', ...D.barrierOrder.map((c) => L.barriers[c].replace(/ \(.*\)/, ''))], tableRows);
+  labelStacks();
+}
+/* put a label inside a segment only if it fits with padding */
+function labelStacks() {
+  document.querySelectorAll('#fig-why .seg-part').forEach((part) => {
+    part.textContent = '';
+    const text = pct(+part.dataset.share, 0);
+    if (part.getBoundingClientRect().width >= canvas.measureText(text).width + 14) {
+      part.textContent = text;
+      part.style.color = part.dataset.ink;
+    }
+  });
+}
+function whyText() {
+  const aw = (p) => barrier(p, 'awareness');
+  const af = (p) => barrier(p, 'affordability');
+  const mm = (c) => barrier('mobile_money', c).share_citing;
+  $('#why-text').textContent =
+    `Cost comes first almost everywhere: affordability is ${pct(af('savings').share_citing, 0)} of savings non-users, ${pct(af('bank').share_citing, 0)} for bank accounts and ${pct(af('insurance').share_citing, 0)} for insurance. ` +
+    `Awareness is a real but secondary barrier: ${pct(aw('insurance').share_citing, 0)} of insurance non-users and ${pct(aw('mobile_banking').share_citing, 0)} of mobile banking non-users say they do not know or understand it. ` +
+    `Mobile money is different: non-users cite phone, network or distance (${pct(mm('physical_access'), 0)}) and ID (${pct(mm('eligibility'), 0)}) more often than cost (${pct(mm('affordability'), 0)}). ` +
+    `For credit, ${pct(barrier('credit', 'relevance').share_citing, 0)} give relevance reasons (they do not want loans, find them too risky or object on religious grounds), close to the ${pct(barrier('credit', 'affordability').share_citing, 0)} who cite cost. ` +
+    `The bars show each barrier's share of all reasons given, as the report draws it.`;
+}
+
+/* ---------- 4. niche cards ---------- */
+function cards() {
+  const box = $('#cards');
+  for (const n of D.niches) {
+    const card = el('article', 'niche');
+    card.append(el('div', 'rank', 'NICHE ' + n.rank));
+    card.append(el('h3', null, `${L.products[n.product_metric]}: ${n.segment_label}`));
+    const big = el('div');
+    big.append(el('div', 'big', adults(n.gap_adults)), el('div', 'small', 'adults short of the national share'));
+    card.append(big);
+    const meter = el('div', 'meter');
+    meter.setAttribute('role', 'img');
+    meter.setAttribute('aria-label', `${pct(n.share_served)} served in this segment, ${pct(n.national_share)} nationally`);
+    const fill = el('div', 'fill');
+    fill.style.width = Math.min(100, n.share_served * 100) + '%';
+    const mark = el('div', 'mark');
+    mark.style.left = `calc(${Math.min(100, n.national_share * 100)}% - 1px)`;
+    meter.append(fill, mark);
+    card.append(meter, el('div', 'small', `${pct(n.share_served)} served here, ${pct(n.national_share)} nationally (line)`));
+    let why;
+    if (n.barrier_basis === 'not measured') {
+      why = 'Why: the survey does not ask non-users about this product.';
+    } else {
+      const base = n.barrier_basis === 'segment' ? '' : ' (national figure, small segment)';
+      const second = n.second_barrier ? `, then ${L.barriers[n.second_barrier].replace(/ \(.*\)/, '').toLowerCase()} (${pct(n.second_share, 0)})` : '';
+      why = `Why: ${L.barriers[n.dominant_barrier].replace(/ \(.*\)/, '').toLowerCase()} (${pct(n.dominant_share, 0)} of non-users)${second}${base}.`;
+    }
+    card.append(el('div', 'why', why));
+    if (n.implication && n.barrier_basis !== 'not measured') card.append(el('div', 'do', n.implication));
+    box.append(card);
+  }
+}
+
+/* ---------- 5. checks ---------- */
+function checks() {
+  const t = $('#checks');
+  const head = el('tr');
+  ['Figure', 'This analysis', 'Report', 'Where in the report'].forEach((h, i) => head.append(el('th', i === 1 || i === 2 ? 'num' : null, h)));
+  t.append(head);
+  for (const c of D.checks) {
+    const tr = el('tr');
+    const f = (v) => (c.unit === 'M' ? v.toFixed(1) + 'M' : v.toFixed(1) + '%');
+    tr.append(el('td', null, c.name), el('td', 'num', f(c.ours)), el('td', 'num', f(c.report)), el('td', null, c.source));
+    t.append(tr);
+  }
+}
+
+/* ---------- init ---------- */
+header();
+gapText(); gapControls(); renderGap();
+whoControls(); renderWho();
+whyText(); renderWhy();
+cards();
+checks();
+let resizeTimer;
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(labelStacks, 120); });
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { renderWhy(); });
+}
+})();
+</script>
+</body>
+</html>
