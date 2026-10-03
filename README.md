@@ -2,14 +2,14 @@
 
 ## Getting the data
 
-The raw survey csv (142 MB) is not stored in the repo. Download it from Google Drive:
+The raw survey xlsx (294 MB) is not stored in the repo. Download it from Google Drive:
 
 ```sh
 uv sync
 uv run python scripts/download_data.py
 ```
 
-This saves `src/finaccess/2024_Finaccess_Publicdata.csv`. Manual link: https://drive.google.com/file/d/1f0lc2OBkJpWX3FUJr21xn6CLbbY7Pk_k/view?usp=sharing
+This saves `src/finaccess/2024_Finaccess_Publicdata.xlsx`. Manual link: https://drive.google.com/file/d/1NGPFK6IGwDpLLQJnrBRyMHiXzUypuZHn/view?usp=sharing
 
 ## Notes
 
