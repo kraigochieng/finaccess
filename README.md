@@ -23,7 +23,8 @@ The emphasis is on **gaps**: segments that lag the national picture, and how man
 5. `metrics.py` computes the weighted share of adults served by each product, overall and by segment; `gaps.py` ranks the lagging segments and products (results in `src/finaccess/results/`)
 6. `barriers.py` groups the reasons adults give for not using six products into the report's barrier categories (`results/barriers.csv`)
 7. `niches.py` combines the gaps and the barriers into a rule-based niche shortlist (`results/niches.csv`)
-8. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
+8. `build_site.py` turns the results into a single-page data story, `site/index.html`
+9. `create_ddl.py` and `values.py` use the data dictionary to produce Postgres DDL and processed value labels
 
 
 ## Finding the gaps
@@ -132,6 +133,24 @@ What it says:
 - Digital credit, SACCO and pension have no reasons-for-non-use questions in the survey, so the "why" is not measured for them.
 
 **Limits.** Segments overlap: the same 18-25 year olds appear in four of the eight niches, so the "adults short" figures describe each niche on its own and must not be added up. Gap size is measured against the national share, not against a target. A barrier is what non-users in the segment say, and a segment with few respondents falls back to the national barrier for that product (flagged in `barrier_basis`). Everything is descriptive, one survey round, and a hypothetical case study.
+
+## The data story page
+
+```sh
+uv run python -m finaccess.build_site   # writes site/index.html
+```
+
+`site/index.html` is one self-contained file (no framework, no build step, no external requests): the headline, the product gaps, a segment explorer, the barriers, the niche cards, and a "how far to trust it" table comparing the national figures with the 2024 report. It is generated from `results/*.csv`, so every number comes from the analysis. Edit `src/finaccess/site_template.html` (structure, styling, chart code) and rebuild; do not edit `site/index.html` by hand.
+
+It follows light and dark mode, works at phone width, and every chart has a keyboard-focusable mark and a table view. The categorical colours were checked with the dataviz palette validator in both modes.
+
+**Viewing it:** open `site/index.html` in a browser.
+
+**Hosting it** (the page is static, so any static host works):
+- *Render:* New > Static Site, connect this repository, leave the build command empty and set the publish directory to `site`.
+- *GitHub Pages:* serve the `site` folder from the repository settings, or copy `site/index.html` to a `gh-pages` branch.
+
+Rebuild and commit `site/index.html` whenever the results change.
 
 ## Getting the data
 
