@@ -1,10 +1,11 @@
 import pandas as pd
 
 from finaccess.csv_to_postgres_types import STATA_TO_POSTGRESQL
+from finaccess.paths import DATA_DIR
 
-variables_csv_file = "2024_Finaccess_Publicdata_variables.csv"
+variables_csv_file = DATA_DIR / "2024_Finaccess_Publicdata_variables.csv"
 # values_csv_file = "2024_Finaccess_Publicdata_values_processed.csv"
-output_sql = "create_finaccess_2024_postgresql.sql"
+output_sql = DATA_DIR / "create_finaccess_2024_postgresql.sql"
 
 
 # Read only header (fast)
