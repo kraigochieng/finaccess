@@ -14,6 +14,7 @@ raw xlsx (Google Drive, git-ignored) → `to_parquet.py` → `src/finaccess/fina
 - `None` is a real education segment; avoid readers that parse it as a missing value (pandas does by default, polars does not).
 - Data file paths come from `finaccess.paths.DATA_DIR`; run modules from the repo root, e.g. `uv run python -m finaccess.exp`.
 - `*_variables.csv` is the data dictionary (3,816 variables); `*_values.txt` holds value labels.
+- `barriers.py` analyses reasons for non-use. The reason flags are 0/1 and asked only of non-users, so the base is non-null rows. `share_of_mentions` (the report's measure) differs from `share_citing` (share of people, multi-response).
 
 ## Data gotchas
 
